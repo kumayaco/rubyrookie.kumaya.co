@@ -1,12 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://rubyrookie.kumaya.co/blog/2014/03/10/start/</loc>
+        <lastmod>2014-03-10T22:21:21+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://rubyrookie.kumaya.co/blog/archives/</loc>
-        <lastmod>2014-03-10T21:38:09+08:00</lastmod>
+        <lastmod>2014-03-10T22:21:21+08:00</lastmod>
     </url>
     <url>
         <loc>http://rubyrookie.kumaya.co/</loc>
-        <lastmod>2014-03-10T21:38:09+08:00</lastmod>
+        <lastmod>2014-03-10T22:21:21+08:00</lastmod>
     </url>
     <url>
         <loc>http://rubyrookie.kumaya.co/robots.txt</loc>

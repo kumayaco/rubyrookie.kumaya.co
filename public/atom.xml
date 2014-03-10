@@ -4,7 +4,7 @@
   <title><![CDATA[The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-10T22:13:39+08:00</updated>
+  <updated>2014-03-10T22:23:13+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -12,5 +12,14 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Start]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/10/start/"/>
+    <updated>2014-03-10T22:19:57+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/10/start</id>
+    <content type="html"><![CDATA[<p>這個是我開始學 Ruby 用來架筆記的網站，開始於 2013 年 3 月 10 日。</p>
+]]></content>
+  </entry>
   
 </feed>
