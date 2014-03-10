@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[The Ruby Rookie Notes]]></title>
+  <link href="http://rubyrookie.kumaya.co/atom.xml" rel="self"/>
+  <link href="http://rubyrookie.kumaya.co/"/>
+  <updated>2014-03-10T22:13:39+08:00</updated>
+  <id>http://rubyrookie.kumaya.co/</id>
+  <author>
+    <name><![CDATA[Vincent Chen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
