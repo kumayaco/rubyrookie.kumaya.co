@@ -1,0 +1,29 @@
+---
+layout: post
+title: "Looping"
+date: 2014-03-11 22:23:56 +0800
+comments: true
+categories: [CH3] 
+---
+
+*start with P. 36*
+
+- `times` to loop
+
+<!-- more -->
+
+## Basic: Using `times` to looping
+
+```ruby
+5.times do puts "Test" end
+```
+
+will produce
+
+```sh
+Test
+Test
+Test
+Test
+Test
+```

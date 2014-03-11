@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[The Ruby Rookie Notes]]></title>
-  <link href="http://rubyrookie.kumaya.co/atom.xml" rel="self"/>
+  <title><![CDATA[Category: CH3 | The Ruby Rookie Notes]]></title>
+  <link href="http://rubyrookie.kumaya.co/blog/categories/ch3/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
   <updated>2014-03-11T22:59:24+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
@@ -30,25 +30,19 @@
 
 <h2>Basic: Using <code>times</code> to looping</h2>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">5</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="nb">puts</span> <span class="s2">&quot;Test&quot;</span> <span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<p><code>ruby
+5.times do puts "Test" end
+</code></p>
 
 <p>will produce</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>Test
-</span><span class='line'>Test
-</span><span class='line'>Test
-</span><span class='line'>Test
-</span><span class='line'>Test
-</span></code></pre></td></tr></table></div></figure>
-
+<p><code>sh
+Test
+Test
+Test
+Test
+Test
+</code></p>
 ]]></content>
   </entry>
   
@@ -101,15 +95,6 @@
 </tbody>
 </table>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Start]]></title>
-    <link href="http://rubyrookie.kumaya.co/blog/2014/03/10/start/"/>
-    <updated>2014-03-10T22:19:57+08:00</updated>
-    <id>http://rubyrookie.kumaya.co/blog/2014/03/10/start</id>
-    <content type="html"><![CDATA[<p>這個是我開始學 Ruby 用來架筆記的網站，開始於 2013 年 3 月 10 日。</p>
 ]]></content>
   </entry>
   
