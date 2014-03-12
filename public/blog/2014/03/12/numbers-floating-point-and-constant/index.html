@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Basic Comparison - The Ruby Rookie Notes</title>
+  <title>Numbers: Floating Point and Constant - The Ruby Rookie Notes</title>
   <meta name="author" content="Vincent Chen">
 
   
-  <meta name="description" content="Full List of Comparison Comparison Meaning x &gt; y Greater than, 大於 x &lt; y Less than, 小於 x == y Equal to, 等於 x &gt;= y Greater than or equal to, &hellip;">
+  <meta name="description" content="start from P. 37 Floating Point Numbers Floating Point Numbers If you want to devide integer numbers and show as float, you need to add .0 to the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rubyrookie.kumaya.co/blog/2014/03/11/basic-comparison">
+  <link rel="canonical" href="http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="The Ruby Rookie Notes" type="application/atom+xml">
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">Basic Comparison</h1>
+      <h1 class="entry-title">Numbers: Floating Point and Constant</h1>
     
     
       <p class="meta">
@@ -96,56 +96,94 @@
   
 
 
-<time datetime="2014-03-11T21:48:54+08:00" pubdate data-updated="true">Mar 11<span>th</span>, 2014</time>
+<time datetime="2014-03-12T22:55:28+08:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><!-- more -->
+<div class="entry-content"><p><em>start from P. 37</em></p>
+
+<ul>
+<li>Floating Point Numbers</li>
+</ul>
 
 
-<h2>Full List of Comparison</h2>
+<!-- more -->
 
-<table>
-<thead>
-<tr>
-<th> Comparison </th>
-<th> Meaning </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> <code>x &gt; y</code> </td>
-<td> Greater than, 大於</td>
-</tr>
-<tr>
-<td> <code>x &lt; y</code> </td>
-<td> Less than, 小於 </td>
-</tr>
-<tr>
-<td> <code>x == y</code> </td>
-<td> Equal to, 等於</td>
-</tr>
-<tr>
-<td> <code>x &gt;= y</code> </td>
-<td> Greater than <em>or</em> equal to, 大於或等於</td>
-</tr>
-<tr>
-<td> <code>x &lt;= y</code> </td>
-<td> Less than <em>or</em> equal to, 小於或等於</td>
-</tr>
-<tr>
-<td> <code>x &lt;=&gt; y</code> </td>
-<td> Comparison; return <code>0</code> if <code>x</code> and <code>y</code> are equal, <code>1</code> if <code>x</code> is higher, and <code>-1</code> if <code>y</code> is higher</td>
-</tr>
-<tr>
-<td> <code>x != y</code> </td>
-<td> Not equal to, 不等於</td>
-</tr>
-</tbody>
-</table>
+
+<h2>Floating Point Numbers</h2>
+
+<p>If you want to devide integer numbers and show as float, you need to add <code>.0</code> to the numbers:</p>
+
+<p><strong>Original</strong> &ndash; integer divide integer will producing integer.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will producing:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>3
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Adding</strong> <code>.0</code> to treat as floating point numbers:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">10</span><span class="o">.</span><span class="mi">0</span> <span class="o">/</span> <span class="mi">3</span><span class="o">.</span><span class="mi">0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will producing:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>3.333333333333333
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Convertion of types</h3>
+
+<p>Using <code>to_f</code> and <code>to_i</code> or relevant methods to convert types.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">x</span><span class="o">.</span><span class="n">to_f</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">to_f</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will producing:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>3.33333333333333
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Convert to integer like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">5</span><span class="o">.</span><span class="mi">7</span><span class="o">.</span><span class="n">to_i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and get:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>5
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>References</h2>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Float.html">Float</a></li>
+</ul>
 
 </div>
 
@@ -169,7 +207,7 @@
   
 
 
-<time datetime="2014-03-11T21:48:54+08:00" pubdate data-updated="true">Mar 11<span>th</span>, 2014</time>
+<time datetime="2014-03-12T22:55:28+08:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
       
 
 <span class="categories">
@@ -183,7 +221,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyrookie.kumaya.co/blog/2014/03/11/basic-comparison/" data-via="vince78718" data-counturl="http://rubyrookie.kumaya.co/blog/2014/03/11/basic-comparison/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/" data-via="vince78718" data-counturl="http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/" >Tweet</a>
   
   
   
@@ -194,10 +232,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/03/10/start/" title="Previous Post: Start">&laquo; Start</a>
+        <a class="basic-alignment left" href="/blog/2014/03/11/looping/" title="Previous Post: Looping">&laquo; Looping</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/03/11/looping/" title="Next Post: Looping">Looping &raquo;</a>
       
     </p>
   </footer>
@@ -259,8 +295,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://rubyrookie.kumaya.co/blog/2014/03/11/basic-comparison/';
-        var disqus_url = 'http://rubyrookie.kumaya.co/blog/2014/03/11/basic-comparison/';
+        var disqus_identifier = 'http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/';
+        var disqus_url = 'http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/';
         var disqus_script = 'embed.js';
       
     (function () {

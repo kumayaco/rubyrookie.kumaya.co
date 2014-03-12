@@ -4,7 +4,7 @@
   <title><![CDATA[The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-12T22:48:47+08:00</updated>
+  <updated>2014-03-13T00:06:23+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -14,11 +14,101 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Numbers: Floating Point and Constant]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/"/>
+    <updated>2014-03-12T22:55:28+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant</id>
+    <content type="html"><![CDATA[<p><em>start from P. 37</em></p>
+
+<ul>
+<li>Floating Point Numbers</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>Floating Point Numbers</h2>
+
+<p>If you want to devide integer numbers and show as float, you need to add <code>.0</code> to the numbers:</p>
+
+<p><strong>Original</strong> &ndash; integer divide integer will producing integer.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will producing:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>3
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Adding</strong> <code>.0</code> to treat as floating point numbers:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">10</span><span class="o">.</span><span class="mi">0</span> <span class="o">/</span> <span class="mi">3</span><span class="o">.</span><span class="mi">0</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will producing:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>3.333333333333333
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Convertion of types</h3>
+
+<p>Using <code>to_f</code> and <code>to_i</code> or relevant methods to convert types.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">x</span><span class="o">.</span><span class="n">to_f</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">to_f</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will producing:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>3.33333333333333
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Convert to integer like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">5</span><span class="o">.</span><span class="mi">7</span><span class="o">.</span><span class="n">to_i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and get:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>5
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>References</h2>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Float.html">Float</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Looping]]></title>
     <link href="http://rubyrookie.kumaya.co/blog/2014/03/11/looping/"/>
     <updated>2014-03-11T22:23:56+08:00</updated>
     <id>http://rubyrookie.kumaya.co/blog/2014/03/11/looping</id>
-    <content type="html"><![CDATA[<p><em>start with P. 36</em></p>
+    <content type="html"><![CDATA[<p><em>start from P. 36</em></p>
 
 <ul>
 <li><code>times</code> to loop</li>
