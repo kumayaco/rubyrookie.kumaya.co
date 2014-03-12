@@ -9,6 +9,7 @@ categories: [CH3]
 *start with P. 36*
 
 - `times` to loop
+- loop with other iterators
 
 <!-- more -->
 
