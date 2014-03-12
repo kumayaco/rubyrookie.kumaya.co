@@ -9,6 +9,7 @@ categories: [CH3]
 *start from P. 37*
 
 - Floating Point Numbers
+- Constants
 
 <!-- more -->
 
@@ -64,6 +65,18 @@ and get:
 ```sh
 5
 ```
+
+## Constants
+
+Make the variable name beginning with a capital letter to let it is a constant.
+
+```ruby
+Pi = 3.14159
+```
+
+### The Class Name
+
+The class name start with capital letter as well, it means once th class is defined, it is a constant part of the program and therefore acts as a constant, too.
 
 
 ## References
