@@ -4,7 +4,7 @@
   <title><![CDATA[The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-12T22:44:29+08:00</updated>
+  <updated>2014-03-12T22:48:47+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -22,6 +22,7 @@
 
 <ul>
 <li><code>times</code> to loop</li>
+<li>loop with other iterators</li>
 </ul>
 
 
