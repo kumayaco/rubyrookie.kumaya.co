@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CH3 | The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/blog/categories/ch3/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-11T22:59:24+08:00</updated>
+  <updated>2014-03-12T22:44:29+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -28,13 +28,16 @@
 <!-- more -->
 
 
-<h2>Basic: Using <code>times</code> to looping</h2>
+<h2>Basic: Using <code>times</code> method to looping</h2>
+
+<p>and using <code>do ... end</code> to surround what do you want to do. And it is better way rather than using <code>{ ... }</code>, but curly brackets make the code more easy to read on a single line.</p>
 
 <p><code>ruby
 5.times do puts "Test" end
+5.times { puts "Test" }
 </code></p>
 
-<p>will produce</p>
+<p>will both produce the same results:</p>
 
 <p><code>sh
 Test
@@ -42,6 +45,41 @@ Test
 Test
 Test
 Test
+</code></p>
+
+<h2>Iterators</h2>
+
+<p>The basic methods are like followings:</p>
+
+<p><code>ruby
+1.upto(5) { /* Do what ever you want */ }     // 從 1 一次加 1 加到 5
+10.downto(5) { /* Do what ever you want */ }  // 從 10 一次減 1 減到 5
+0.step(50, 5) { /* Do what ever you want */ } // 從 0 加到 50 ，每次加 5
+</code></p>
+
+<h3>可以用 pipe line 來接從迴圈傳進來的值</h3>
+
+<p>```ruby
+1.upto(5) { |number| puts number } // pipe line 之間可以放任意符合規則名稱的變數</p>
+
+<p>// or</p>
+
+<p>1.upto(5) do |number|</p>
+
+<pre><code>puts number
+</code></pre>
+
+<p>end
+```</p>
+
+<p>will both produce:</p>
+
+<p><code>sh
+1
+2
+3
+4
+5
 </code></p>
 ]]></content>
   </entry>

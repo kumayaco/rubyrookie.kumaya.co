@@ -12,13 +12,16 @@ categories: [CH3]
 
 <!-- more -->
 
-## Basic: Using `times` to looping
+## Basic: Using `times` method to looping
+
+and using `do ... end` to surround what do you want to do. And it is better way rather than using `{ ... }`, but curly brackets make the code more easy to read on a single line.
 
 ```ruby
 5.times do puts "Test" end
+5.times { puts "Test" }
 ```
 
-will produce
+will both produce the same results: 
 
 ```sh
 Test
@@ -26,4 +29,35 @@ Test
 Test
 Test
 Test
+```
+## Iterators
+
+The basic methods are like followings:
+
+```ruby
+1.upto(5) { /* Do what ever you want */ }     // 從 1 一次加 1 加到 5
+10.downto(5) { /* Do what ever you want */ }  // 從 10 一次減 1 減到 5
+0.step(50, 5) { /* Do what ever you want */ } // 從 0 加到 50 ，每次加 5
+```
+
+### 可以用 pipe line 來接從迴圈傳進來的值
+
+```ruby
+1.upto(5) { |number| puts number } // pipe line 之間可以放任意符合規則名稱的變數
+
+// or
+
+1.upto(5) do |number|
+	puts number
+end
+```
+
+will both produce:
+
+```sh
+1
+2
+3
+4
+5
 ```
