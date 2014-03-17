@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CH3 | The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/blog/categories/ch3/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-17T22:33:32+08:00</updated>
+  <updated>2014-03-17T23:35:40+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -12,6 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Text and Strings]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/17/text-and-strings/"/>
+    <updated>2014-03-17T22:43:52+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/17/text-and-strings</id>
+    <content type="html"><![CDATA[<p><em>start from P. 39</em></p>
+
+<p>Manipulating text and content.</p>
+
+<ul>
+<li>String Literals</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>String Literals</h2>
+
+<p>First, the <code>String</code> class:</p>
+
+<p><code>ruby
+puts "Hello, world!".class
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+String
+</code></p>
+
+<h3>Basic expressions just like <code>Number</code>s</h3>
+
+<p><code>ruby
+x = "Test"
+y = "String"
+puts "Success!" if x + y == "TestString"
+</code></p>
+
+<p>result:</p>
+
+<p><code>sh
+Success!
+</code></p>
+
+<h3>Multiple Lines</h3>
+
+<p>You can wrap your lines with your prefered delimiters.</p>
+
+<p>```ruby
+x = %q{This is first line,
+second line and
+third line}</p>
+
+<p>// or</p>
+
+<p>x = %q!This is first line,
+second line and
+third line!</p>
+
+<p>// or</p>
+
+<p>x = &lt;&lt;END_MY_LINE
+This is first line
+second line and
+third line
+END_MY_LINE</p>
+
+<p>```</p>
+
+<p>For the last example above, &lt;&lt; start the string literal.</p>
+
+<h3>String Expressions</h3>
+
+<p>Just like the previous section, <code>String</code> could use expressions and act like <code>Number</code>.</p>
+
+<p>```ruby
+puts &ldquo;abc&rdquo;*5
+// abcabcabcabcabc</p>
+
+<p>puts &ldquo;x&rdquo; > &ldquo;y&rdquo;
+// false</p>
+
+<p>puts &ldquo;y&rdquo; > &ldquo;x&rdquo;
+// true
+```</p>
+
+<h4>ASCII</h4>
+
+<p><code>ruby
+puts ?x
+puts 120.chr
+</code>
+First line will convert character to <code>ASCII</code> value, the second line will convert the value to character based on <code>ASCII</code>:
+<code>sh
+120
+x
+</code></p>
+
+<h2>References</h2>
+
+<ul>
+<li>class <a href="http://www.ruby-doc.org/core-2.1.1/String.html">String</a> <em>base on ruby 2.1.1</em></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Numbers: Floating Point and Constant]]></title>

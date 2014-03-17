@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Numbers: Floating Point and Constant - The Ruby Rookie Notes</title>
+  <title>Text and Strings - The Ruby Rookie Notes</title>
   <meta name="author" content="Vincent Chen">
 
   
-  <meta name="description" content="start from P. 37 Floating Point Numbers
-Constants Floating Point Numbers If you want to devide integer numbers and show as float, you need to add .0 &hellip;">
+  <meta name="description" content="start from P. 39 Manipulating text and content. String Literals String Literals First, the String class: 1
+puts &quot;Hello, world!&quot;.class will &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant">
+  <link rel="canonical" href="http://rubyrookie.kumaya.co/blog/2014/03/17/text-and-strings">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="The Ruby Rookie Notes" type="application/atom+xml">
@@ -81,7 +81,7 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
   
   <header>
     
-      <h1 class="entry-title">Numbers: Floating Point and Constant</h1>
+      <h1 class="entry-title">Text and Strings</h1>
     
     
       <p class="meta">
@@ -97,107 +97,147 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
   
 
 
-<time datetime="2014-03-12T22:55:28+08:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
+<time datetime="2014-03-17T22:43:52+08:00" pubdate data-updated="true">Mar 17<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><em>start from P. 37</em></p>
+<div class="entry-content"><p><em>start from P. 39</em></p>
+
+<p>Manipulating text and content.</p>
 
 <ul>
-<li>Floating Point Numbers</li>
-<li>Constants</li>
+<li>String Literals</li>
 </ul>
 
 
 <!-- more -->
 
 
-<h2>Floating Point Numbers</h2>
+<h2>String Literals</h2>
 
-<p>If you want to devide integer numbers and show as float, you need to add <code>.0</code> to the numbers:</p>
-
-<p><strong>Original</strong> &ndash; integer divide integer will producing integer.</p>
+<p>First, the <code>String</code> class:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Hello, world!&quot;</span><span class="o">.</span><span class="n">class</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>will producing:</p>
+<p>will get</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>3
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>String
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>Adding</strong> <code>.0</code> to treat as floating point numbers:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">10</span><span class="o">.</span><span class="mi">0</span> <span class="o">/</span> <span class="mi">3</span><span class="o">.</span><span class="mi">0</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>will producing:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>3.333333333333333
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Convertion of types</h3>
-
-<p>Using <code>to_f</code> and <code>to_i</code> or relevant methods to convert types.</p>
+<h3>Basic expressions just like <code>Number</code>s</h3>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">x</span><span class="o">.</span><span class="n">to_f</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">to_f</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Test&quot;</span>
+</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;String&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;Success!&quot;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">==</span> <span class="s2">&quot;TestString&quot;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>will producing:</p>
+<p>result:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>3.33333333333333
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>Success!
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Convert to integer like this:</p>
+<h3>Multiple Lines</h3>
+
+<p>You can wrap your lines with your prefered delimiters.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">5</span><span class="o">.</span><span class="mi">7</span><span class="o">.</span><span class="n">to_i</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="sx">%q{This is first line,</span>
+</span><span class='line'><span class="sx">second line and</span>
+</span><span class='line'><span class="sx">third line}</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">//</span> <span class="ow">or</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="sx">%q!This is first line,</span>
+</span><span class='line'><span class="sx">second line and</span>
+</span><span class='line'><span class="sx">third line!</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">//</span> <span class="ow">or</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="o">&lt;&lt;</span><span class="no">END_MY_LINE</span>
+</span><span class='line'><span class="sh">This is first line</span>
+</span><span class='line'><span class="sh">second line and</span>
+</span><span class='line'><span class="sh">third line</span>
+</span><span class='line'><span class="no">END_MY_LINE</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>and get:</p>
+<p>For the last example above, &lt;&lt; start the string literal.</p>
+
+<h3>String Expressions</h3>
+
+<p>Just like the previous section, <code>String</code> could use expressions and act like <code>Number</code>.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>5
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;abc&quot;</span><span class="o">*</span><span class="mi">5</span>
+</span><span class='line'><span class="o">//</span> <span class="n">abcabcabcabcabc</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;x&quot;</span> <span class="o">&gt;</span> <span class="s2">&quot;y&quot;</span>
+</span><span class='line'><span class="sr">//</span> <span class="kp">false</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;y&quot;</span> <span class="o">&gt;</span> <span class="s2">&quot;x&quot;</span>
+</span><span class='line'><span class="sr">//</span> <span class="kp">true</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Constants</h2>
-
-<p>Make the variable name beginning with a capital letter to let it is a constant.</p>
+<h4>ASCII</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Pi</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">14159</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="sc">?x</span>
+</span><span class='line'><span class="nb">puts</span> <span class="mi">120</span><span class="o">.</span><span class="n">chr</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>The Class Name</h3>
+<p>First line will convert character to <code>ASCII</code> value, the second line will convert the value to character based on <code>ASCII</code>:</p>
 
-<p>The class name start with capital letter as well, it means once th class is defined, it is a constant part of the program and therefore acts as a constant, too.</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>120
+</span><span class='line'>x
+</span></code></pre></td></tr></table></div></figure>
+
 
 <h2>References</h2>
 
 <ul>
-<li><a href="http://www.ruby-doc.org/core-2.1.1/Float.html">Float</a></li>
+<li>class <a href="http://www.ruby-doc.org/core-2.1.1/String.html">String</a> <em>base on ruby 2.1.1</em></li>
 </ul>
 
 </div>
@@ -222,7 +262,7 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
   
 
 
-<time datetime="2014-03-12T22:55:28+08:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
+<time datetime="2014-03-17T22:43:52+08:00" pubdate data-updated="true">Mar 17<span>th</span>, 2014</time>
       
 
 <span class="categories">
@@ -236,7 +276,7 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/" data-via="vince78718" data-counturl="http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyrookie.kumaya.co/blog/2014/03/17/text-and-strings/" data-via="vince78718" data-counturl="http://rubyrookie.kumaya.co/blog/2014/03/17/text-and-strings/" >Tweet</a>
   
   
   
@@ -247,10 +287,8 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/03/11/looping/" title="Previous Post: Looping">&laquo; Looping</a>
+        <a class="basic-alignment left" href="/blog/2014/03/12/numbers-floating-point-and-constant/" title="Previous Post: Numbers: Floating Point and Constant">&laquo; Numbers: Floating Point and Constant</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/03/17/text-and-strings/" title="Next Post: Text and Strings">Text and Strings &raquo;</a>
       
     </p>
   </footer>
@@ -316,8 +354,8 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/';
-        var disqus_url = 'http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/';
+        var disqus_identifier = 'http://rubyrookie.kumaya.co/blog/2014/03/17/text-and-strings/';
+        var disqus_url = 'http://rubyrookie.kumaya.co/blog/2014/03/17/text-and-strings/';
         var disqus_script = 'embed.js';
       
     (function () {
