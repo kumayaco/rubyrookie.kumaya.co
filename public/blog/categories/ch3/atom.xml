@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CH3 | The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/blog/categories/ch3/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-13T00:06:23+08:00</updated>
+  <updated>2014-03-17T22:33:32+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -22,6 +22,7 @@
 
 <ul>
 <li>Floating Point Numbers</li>
+<li>Constants</li>
 </ul>
 
 
@@ -81,6 +82,18 @@ and get:
 <code>sh
 5
 </code></p>
+
+<h2>Constants</h2>
+
+<p>Make the variable name beginning with a capital letter to let it is a constant.</p>
+
+<p><code>ruby
+Pi = 3.14159
+</code></p>
+
+<h3>The Class Name</h3>
+
+<p>The class name start with capital letter as well, it means once th class is defined, it is a constant part of the program and therefore acts as a constant, too.</p>
 
 <h2>References</h2>
 
