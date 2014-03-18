@@ -3,7 +3,7 @@ layout: post
 title: "Text and Strings"
 date: 2014-03-17 22:43:52 +0800
 comments: true
-categories: [CH3] 
+categories: [CH3, String] 
 ---
 
 *start from P. 39*
