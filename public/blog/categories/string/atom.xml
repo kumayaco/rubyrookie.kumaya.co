@@ -4,7 +4,7 @@
   <title><![CDATA[Category: String | The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/blog/categories/string/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-19T00:21:58+08:00</updated>
+  <updated>2014-03-19T06:21:16+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[String: Manipulations]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/19/string-manipulations/"/>
+    <updated>2014-03-19T00:27:09+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/19/string-manipulations</id>
+    <content type="html"><![CDATA[<p><em>started from P. 43</em></p>
+
+<ul>
+<li>String Methods</li>
+</ul>
+
+
+<!-- more -->
+
+
+<p></p>
+
+<h3>String Methods</h3>
+
+<table>
+<thead>
+<tr>
+<th>Expression </th>
+<th> Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"Test" + "Test"</code> </td>
+<td> <code>TestTest</code></td>
+</tr>
+<tr>
+<td><code>"Test".capitalize</code> </td>
+<td> <code>Test</code></td>
+</tr>
+<tr>
+<td><code>"Test".downcase</code> </td>
+<td> <code>test</code></td>
+</tr>
+<tr>
+<td><code>"Test".chop</code> </td>
+<td> <code>Tes</code></td>
+</tr>
+<tr>
+<td><code>"Test".next</code> </td>
+<td> <code>Tesu</code></td>
+</tr>
+<tr>
+<td><code>"Test".reverse</code> </td>
+<td> <code>tseT</code></td>
+</tr>
+<tr>
+<td><code>"Test".sum</code> </td>
+<td> <code>416</code></td>
+</tr>
+<tr>
+<td><code>"Test".swapcase</code> </td>
+<td> <code>tEST</code></td>
+</tr>
+<tr>
+<td><code>"Test".upcase</code> </td>
+<td> <code>TEST</code></td>
+</tr>
+<tr>
+<td><code>"Test".upcase.reverse</code> </td>
+<td> <code>TSET</code></td>
+</tr>
+<tr>
+<td><code>"Test".upcase.reverse.next</code> </td>
+<td> <code>TSEU</code></td>
+</tr>
+</tbody>
+</table>
+
+
+<hr />
+
+<p>Like the last three items, you can combo the methods to do multiple manipulations on String.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[String: Interpolation]]></title>
