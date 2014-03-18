@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CH3 | The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/blog/categories/ch3/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-17T23:35:40+08:00</updated>
+  <updated>2014-03-19T00:21:58+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[String: Interpolation]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/19/string-interpolation/"/>
+    <updated>2014-03-19T00:00:54+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/19/string-interpolation</id>
+    <content type="html"><![CDATA[<p><em>start from P. 43</em></p>
+
+<!-- more -->
+
+
+<p>Using <code>#{}</code> to wrap the variables or expressions in, will print out what you have inside.</p>
+
+<p><code>ruby
+x = 10
+y = 20
+puts "#{x} + #{y} = #{x+y}"
+</code>
+will get;
+<code>sh
+10 + 20 = 30
+</code></p>
+
+<p>In the other hand, you can do this as well:
+<code>ruby
+puts "100 * 5 = #{100*5}"
+</code>
+will get:
+<code>
+100 * 5 = 500
+</code></p>
+
+<h3>Combo</h3>
+
+<p>Combine with other functionalities mentioned before, we can come up with more complicated statement like this:</p>
+
+<p><code>ruby
+my_string "It's a #{"bad " * 5}world"
+puts my_string
+</code></p>
+
+<p>will get:</p>
+
+<p><code>sh
+It's a bad bad bad bad bad world
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Text and Strings]]></title>

@@ -4,7 +4,7 @@
   <title><![CDATA[The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-17T23:35:40+08:00</updated>
+  <updated>2014-03-19T00:21:58+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[String: Interpolation]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/19/string-interpolation/"/>
+    <updated>2014-03-19T00:00:54+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/19/string-interpolation</id>
+    <content type="html"><![CDATA[<p><em>start from P. 43</em></p>
+
+<!-- more -->
+
+
+<p>Using <code>#{}</code> to wrap the variables or expressions in, will print out what you have inside.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="s2"> = </span><span class="si">#{</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get;</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>10 + <span class="nv">20</span> <span class="o">=</span> 30
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In the other hand, you can do this as well:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;100 * 5 = </span><span class="si">#{</span><span class="mi">100</span><span class="o">*</span><span class="mi">5</span><span class="si">}</span><span class="s2">&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">100</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">500</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Combo</h3>
+
+<p>Combine with other functionalities mentioned before, we can come up with more complicated statement like this:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">my_string</span> <span class="s2">&quot;It&#39;s a </span><span class="si">#{</span><span class="s2">&quot;bad &quot;</span> <span class="o">*</span> <span class="mi">5</span><span class="si">}</span><span class="s2">world&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">my_string</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>It<span class="err">&#39;</span>s a bad bad bad bad bad world
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Text and Strings]]></title>
