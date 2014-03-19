@@ -4,7 +4,7 @@
   <title><![CDATA[The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-19T06:24:22+08:00</updated>
+  <updated>2014-03-19T23:46:05+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -12,6 +12,149 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[String: Basic Regular Expressions]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions/"/>
+    <updated>2014-03-19T22:31:54+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions</id>
+    <content type="html"><![CDATA[<p>This article is the brief introduction to regex.</p>
+
+<ul>
+<li>Substitutions &ndash; <code>.sub()</code></li>
+<li>Iterations &ndash; <code>.scan()</code></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Substitutions</h3>
+
+<h4>Basics</h4>
+
+<p>First, we can try without regex:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;foobar&quot;</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>foofoo
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Using <code>gsub()</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;this is a test&quot;</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>ths s a <span class="nb">test</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Substitute with simple <code>regex</code></h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span><span class="o">=</span> <span class="s2">&quot;This is a test&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">x</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/^../</span><span class="p">,</span><span class="s1">&#39;Hello&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>^</code> is an <em>anchor</em> to let it know will match from the beginning of any lines within the string. the two periods, <code>..</code>, mean two characters. So the <code>/^../</code> means &ldquo;any two characters immediately after the start of a line,&rdquo; and it will substitute <code>Th</code> in this case.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>Hellois is a <span class="nb">test</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and <code>$</code> is an <em>anchor</em> to let it know match frone the end of any lines within the given string.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span><span class="o">=</span> <span class="s2">&quot;This is a test&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">x</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/..$/</span><span class="p">,</span><span class="s1">&#39;Hello&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>This is a teHello
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Iteration</h3>
+
+<p>basic <code>scan()</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;xyz&quot;</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/./</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">letter</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">letter</span> <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">//</span> <span class="ow">or</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&quot;xyz&quot;</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/./</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">letter</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">letter</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>/./</code> will scan every letter out, these will both get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>x
+</span><span class='line'>y
+</span><span class='line'>z
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Symbols</h4>
+
+<p>if use only <code>..</code> for extract every other letter, will get <em>space</em>s as well. to prevent this situation, we can use <code>\w</code> to skip spaces.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;This is a test&quot;</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/\w\w/</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>Th
+</span><span class='line'>is
+</span><span class='line'>is
+</span><span class='line'>te
+</span><span class='line'>st
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-sub">sub()</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-gsub">gsub()</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-scan">scan()</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[String: Manipulations]]></title>

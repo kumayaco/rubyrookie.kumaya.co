@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Regex | The Ruby Rookie Notes]]></title>
+  <link href="http://rubyrookie.kumaya.co/blog/categories/regex/atom.xml" rel="self"/>
+  <link href="http://rubyrookie.kumaya.co/"/>
+  <updated>2014-03-19T23:46:05+08:00</updated>
+  <id>http://rubyrookie.kumaya.co/</id>
+  <author>
+    <name><![CDATA[Vincent Chen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[String: Basic Regular Expressions]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions/"/>
+    <updated>2014-03-19T22:31:54+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions</id>
+    <content type="html"><![CDATA[<p>This article is the brief introduction to regex.</p>
+
+<ul>
+<li>Substitutions &ndash; <code>.sub()</code></li>
+<li>Iterations &ndash; <code>.scan()</code></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Substitutions</h3>
+
+<h4>Basics</h4>
+
+<p>First, we can try without regex:</p>
+
+<p><code>ruby
+puts "foobar".sub('bar','foo')
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+foofoo
+</code></p>
+
+<p>Using <code>gsub()</code></p>
+
+<p><code>ruby
+puts "this is a test".gsub('i', '')
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+ths s a test
+</code></p>
+
+<h4>Substitute with simple <code>regex</code></h4>
+
+<p><code>ruby
+x= "This is a test"
+puts x.sub(/^../,'Hello')
+</code></p>
+
+<p><code>^</code> is an <em>anchor</em> to let it know will match from the beginning of any lines within the string. the two periods, <code>..</code>, mean two characters. So the <code>/^../</code> means &ldquo;any two characters immediately after the start of a line,&rdquo; and it will substitute <code>Th</code> in this case.</p>
+
+<p><code>sh
+Hellois is a test
+</code>
+and <code>$</code> is an <em>anchor</em> to let it know match frone the end of any lines within the given string.</p>
+
+<p><code>ruby
+x= "This is a test"
+puts x.sub(/..$/,'Hello')
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+This is a teHello
+</code></p>
+
+<h3>Iteration</h3>
+
+<p>basic <code>scan()</code></p>
+
+<p>```ruby
+&ldquo;xyz&rdquo;.scan(/./) do |letter| puts letter end</p>
+
+<p>// or</p>
+
+<p>&ldquo;xyz&rdquo;.scan(/./) { |letter| puts letter }
+```</p>
+
+<p><code>/./</code> will scan every letter out, these will both get</p>
+
+<p><code>sh
+x
+y
+z
+</code></p>
+
+<h4>Symbols</h4>
+
+<p>if use only <code>..</code> for extract every other letter, will get <em>space</em>s as well. to prevent this situation, we can use <code>\w</code> to skip spaces.</p>
+
+<p><code>ruby
+"This is a test".scan(/\w\w/) { |x| puts x }
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+Th
+is
+is
+te
+st
+</code></p>
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-sub">sub()</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-gsub">gsub()</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-scan">scan()</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

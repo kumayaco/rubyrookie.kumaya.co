@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Numbers: Floating Point and Constant - The Ruby Rookie Notes</title>
+  <title>String: Basic Regular Expressions - The Ruby Rookie Notes</title>
   <meta name="author" content="Vincent Chen">
 
   
-  <meta name="description" content="start from P. 37 Floating Point Numbers
-Constants Floating Point Numbers If you want to devide integer numbers and show as float, you need to add .0 &hellip;">
+  <meta name="description" content="This article is the brief introduction to regex. Substitutions &ndash; .sub()
+Iterations &ndash; .scan() Substitutions Basics First, we can try &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant">
+  <link rel="canonical" href="http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="The Ruby Rookie Notes" type="application/atom+xml">
@@ -81,7 +81,7 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
   
   <header>
     
-      <h1 class="entry-title">Numbers: Floating Point and Constant</h1>
+      <h1 class="entry-title">String: Basic Regular Expressions</h1>
     
     
       <p class="meta">
@@ -97,107 +97,146 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
   
 
 
-<time datetime="2014-03-12T22:55:28+08:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
+<time datetime="2014-03-19T22:31:54+08:00" pubdate data-updated="true">Mar 19<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><em>start from P. 37</em></p>
+<div class="entry-content"><p>This article is the brief introduction to regex.</p>
 
 <ul>
-<li>Floating Point Numbers</li>
-<li>Constants</li>
+<li>Substitutions &ndash; <code>.sub()</code></li>
+<li>Iterations &ndash; <code>.scan()</code></li>
 </ul>
 
 
 <!-- more -->
 
 
-<h2>Floating Point Numbers</h2>
+<h3>Substitutions</h3>
 
-<p>If you want to devide integer numbers and show as float, you need to add <code>.0</code> to the numbers:</p>
+<h4>Basics</h4>
 
-<p><strong>Original</strong> &ndash; integer divide integer will producing integer.</p>
+<p>First, we can try without regex:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;foobar&quot;</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>will producing:</p>
+<p>will get</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>3
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>foofoo
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>Adding</strong> <code>.0</code> to treat as floating point numbers:</p>
+<p>Using <code>gsub()</code></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">10</span><span class="o">.</span><span class="mi">0</span> <span class="o">/</span> <span class="mi">3</span><span class="o">.</span><span class="mi">0</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;this is a test&quot;</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>will producing:</p>
+<p>will get</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>3.333333333333333
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>ths s a <span class="nb">test</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>Convertion of types</h3>
+<h4>Substitute with simple <code>regex</code></h4>
 
-<p>Using <code>to_f</code> and <code>to_i</code> or relevant methods to convert types.</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span><span class="o">=</span> <span class="s2">&quot;This is a test&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">x</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/^../</span><span class="p">,</span><span class="s1">&#39;Hello&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>^</code> is an <em>anchor</em> to let it know will match from the beginning of any lines within the string. the two periods, <code>..</code>, mean two characters. So the <code>/^../</code> means &ldquo;any two characters immediately after the start of a line,&rdquo; and it will substitute <code>Th</code> in this case.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>Hellois is a <span class="nb">test</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and <code>$</code> is an <em>anchor</em> to let it know match frone the end of any lines within the given string.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span><span class="o">=</span> <span class="s2">&quot;This is a test&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">x</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sr">/..$/</span><span class="p">,</span><span class="s1">&#39;Hello&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>This is a teHello
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Iteration</h3>
+
+<p>basic <code>scan()</code></p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="mi">3</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">x</span><span class="o">.</span><span class="n">to_f</span> <span class="o">/</span> <span class="n">y</span><span class="o">.</span><span class="n">to_f</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;xyz&quot;</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/./</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">letter</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">letter</span> <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="sr">//</span> <span class="ow">or</span>
+</span><span class='line'>
+</span><span class='line'><span class="s2">&quot;xyz&quot;</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/./</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">letter</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">letter</span> <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>will producing:</p>
+<p><code>/./</code> will scan every letter out, these will both get</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>3.33333333333333
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>x
+</span><span class='line'>y
+</span><span class='line'>z
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Convert to integer like this:</p>
+<h4>Symbols</h4>
+
+<p>if use only <code>..</code> for extract every other letter, will get <em>space</em>s as well. to prevent this situation, we can use <code>\w</code> to skip spaces.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="mi">5</span><span class="o">.</span><span class="mi">7</span><span class="o">.</span><span class="n">to_i</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="s2">&quot;This is a test&quot;</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">/\w\w/</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span> <span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>and get:</p>
+<p>will get</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>5
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>Th
+</span><span class='line'>is
+</span><span class='line'>is
+</span><span class='line'>te
+</span><span class='line'>st
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h2>Constants</h2>
-
-<p>Make the variable name beginning with a capital letter to let it is a constant.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Pi</span> <span class="o">=</span> <span class="mi">3</span><span class="o">.</span><span class="mi">14159</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>The Class Name</h3>
-
-<p>The class name start with capital letter as well, it means once th class is defined, it is a constant part of the program and therefore acts as a constant, too.</p>
-
-<h2>References</h2>
+<h3>References</h3>
 
 <ul>
-<li><a href="http://www.ruby-doc.org/core-2.1.1/Float.html">Float</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-sub">sub()</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-gsub">gsub()</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-scan">scan()</a></li>
 </ul>
 
 </div>
@@ -222,12 +261,12 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
   
 
 
-<time datetime="2014-03-12T22:55:28+08:00" pubdate data-updated="true">Mar 12<span>th</span>, 2014</time>
+<time datetime="2014-03-19T22:31:54+08:00" pubdate data-updated="true">Mar 19<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/ch3/'>CH3</a>
+    <a class='category' href='/blog/categories/ch3/'>CH3</a>, <a class='category' href='/blog/categories/string/'>String</a>, <a class='category' href='/blog/categories/regex/'>regex</a>
   
 </span>
 
@@ -236,7 +275,7 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/" data-via="vince78718" data-counturl="http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions/" data-via="vince78718" data-counturl="http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions/" >Tweet</a>
   
   
   
@@ -247,10 +286,8 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/03/11/looping/" title="Previous Post: Looping">&laquo; Looping</a>
+        <a class="basic-alignment left" href="/blog/2014/03/19/string-manipulations/" title="Previous Post: String: Manipulations">&laquo; String: Manipulations</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/03/17/text-and-strings/" title="Next Post: Text and Strings">Text and Strings &raquo;</a>
       
     </p>
   </footer>
@@ -316,8 +353,8 @@ Constants Floating Point Numbers If you want to devide integer numbers and show 
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/';
-        var disqus_url = 'http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/';
+        var disqus_identifier = 'http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions/';
+        var disqus_url = 'http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions/';
         var disqus_script = 'embed.js';
       
     (function () {

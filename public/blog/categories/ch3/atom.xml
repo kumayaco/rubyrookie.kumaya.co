@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CH3 | The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/blog/categories/ch3/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-19T06:24:22+08:00</updated>
+  <updated>2014-03-19T23:46:05+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -12,6 +12,124 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[String: Basic Regular Expressions]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions/"/>
+    <updated>2014-03-19T22:31:54+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions</id>
+    <content type="html"><![CDATA[<p>This article is the brief introduction to regex.</p>
+
+<ul>
+<li>Substitutions &ndash; <code>.sub()</code></li>
+<li>Iterations &ndash; <code>.scan()</code></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3>Substitutions</h3>
+
+<h4>Basics</h4>
+
+<p>First, we can try without regex:</p>
+
+<p><code>ruby
+puts "foobar".sub('bar','foo')
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+foofoo
+</code></p>
+
+<p>Using <code>gsub()</code></p>
+
+<p><code>ruby
+puts "this is a test".gsub('i', '')
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+ths s a test
+</code></p>
+
+<h4>Substitute with simple <code>regex</code></h4>
+
+<p><code>ruby
+x= "This is a test"
+puts x.sub(/^../,'Hello')
+</code></p>
+
+<p><code>^</code> is an <em>anchor</em> to let it know will match from the beginning of any lines within the string. the two periods, <code>..</code>, mean two characters. So the <code>/^../</code> means &ldquo;any two characters immediately after the start of a line,&rdquo; and it will substitute <code>Th</code> in this case.</p>
+
+<p><code>sh
+Hellois is a test
+</code>
+and <code>$</code> is an <em>anchor</em> to let it know match frone the end of any lines within the given string.</p>
+
+<p><code>ruby
+x= "This is a test"
+puts x.sub(/..$/,'Hello')
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+This is a teHello
+</code></p>
+
+<h3>Iteration</h3>
+
+<p>basic <code>scan()</code></p>
+
+<p>```ruby
+&ldquo;xyz&rdquo;.scan(/./) do |letter| puts letter end</p>
+
+<p>// or</p>
+
+<p>&ldquo;xyz&rdquo;.scan(/./) { |letter| puts letter }
+```</p>
+
+<p><code>/./</code> will scan every letter out, these will both get</p>
+
+<p><code>sh
+x
+y
+z
+</code></p>
+
+<h4>Symbols</h4>
+
+<p>if use only <code>..</code> for extract every other letter, will get <em>space</em>s as well. to prevent this situation, we can use <code>\w</code> to skip spaces.</p>
+
+<p><code>ruby
+"This is a test".scan(/\w\w/) { |x| puts x }
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+Th
+is
+is
+te
+st
+</code></p>
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-sub">sub()</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-gsub">gsub()</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-scan">scan()</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[String: Manipulations]]></title>
@@ -338,78 +456,6 @@ Pi = 3.14159
 <li><a href="http://www.ruby-doc.org/core-2.1.1/Float.html">Float</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Looping]]></title>
-    <link href="http://rubyrookie.kumaya.co/blog/2014/03/11/looping/"/>
-    <updated>2014-03-11T22:23:56+08:00</updated>
-    <id>http://rubyrookie.kumaya.co/blog/2014/03/11/looping</id>
-    <content type="html"><![CDATA[<p><em>start from P. 36</em></p>
-
-<ul>
-<li><code>times</code> to loop</li>
-<li>loop with other iterators</li>
-</ul>
-
-
-<!-- more -->
-
-
-<h2>Basic: Using <code>times</code> method to looping</h2>
-
-<p>and using <code>do ... end</code> to surround what do you want to do. And it is better way rather than using <code>{ ... }</code>, but curly brackets make the code more easy to read on a single line.</p>
-
-<p><code>ruby
-5.times do puts "Test" end
-5.times { puts "Test" }
-</code></p>
-
-<p>will both produce the same results:</p>
-
-<p><code>sh
-Test
-Test
-Test
-Test
-Test
-</code></p>
-
-<h2>Iterators</h2>
-
-<p>The basic methods are like followings:</p>
-
-<p><code>ruby
-1.upto(5) { /* Do what ever you want */ }     // 從 1 一次加 1 加到 5
-10.downto(5) { /* Do what ever you want */ }  // 從 10 一次減 1 減到 5
-0.step(50, 5) { /* Do what ever you want */ } // 從 0 加到 50 ，每次加 5
-</code></p>
-
-<h3>可以用 pipe line 來接從迴圈傳進來的值</h3>
-
-<p>```ruby
-1.upto(5) { |number| puts number } // pipe line 之間可以放任意符合規則名稱的變數</p>
-
-<p>// or</p>
-
-<p>1.upto(5) do |number|</p>
-
-<pre><code>puts number
-</code></pre>
-
-<p>end
-```</p>
-
-<p>will both produce:</p>
-
-<p><code>sh
-1
-2
-3
-4
-5
-</code></p>
 ]]></content>
   </entry>
   
