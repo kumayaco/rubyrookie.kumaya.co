@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Chen">
 
   
-  <meta name="description" content="This article is the brief introduction to regex. Substitutions &ndash; .sub()
-Iterations &ndash; .scan() Substitutions Basics First, we can try &hellip;">
+  <meta name="description" content="started from P. 44 This article is the brief introduction to regex. Substitutions &ndash; .sub()
+Iterations &ndash; .scan()
+Matching Substitutions &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -104,11 +105,14 @@ Iterations &ndash; .scan() Substitutions Basics First, we can try &hellip;">
   </header>
 
 
-<div class="entry-content"><p>This article is the brief introduction to regex.</p>
+<div class="entry-content"><p><em>started from P. 44</em></p>
+
+<p>This article is the brief introduction to regex.</p>
 
 <ul>
 <li>Substitutions &ndash; <code>.sub()</code></li>
 <li>Iterations &ndash; <code>.scan()</code></li>
+<li>Matching</li>
 </ul>
 
 
@@ -231,12 +235,107 @@ Iterations &ndash; .scan() Substitutions Basics First, we can try &hellip;">
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h3>Basic Special Characters and Symbols Within Regular Expressions</h3>
+
+<table>
+<thead>
+<tr>
+<th>Character </th>
+<th> Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^  </td>
+<td> Anchor, the begining of a line</td>
+</tr>
+<tr>
+<td>$  </td>
+<td> Anchor, the end of a line</td>
+</tr>
+<tr>
+<td>\A </td>
+<td> Anchor, the start of a string</td>
+</tr>
+<tr>
+<td>\Z </td>
+<td> Anchor, the end of a string</td>
+</tr>
+<tr>
+<td>.  </td>
+<td> Any character </td>
+</tr>
+<tr>
+<td>\w </td>
+<td> Any letter, digit, or underscore</td>
+</tr>
+<tr>
+<td>\W </td>
+<td> Anything that <code>\w</code> doesn&rsquo;t match</td>
+</tr>
+<tr>
+<td>\d </td>
+<td> Any digit</td>
+</tr>
+<tr>
+<td>\D </td>
+<td> Non-digit</td>
+</tr>
+<tr>
+<td>\s </td>
+<td> White space, tab, newline</td>
+</tr>
+<tr>
+<td>\S </td>
+<td> non-whitespace</td>
+</tr>
+</tbody>
+</table>
+
+
+<br/><br/>
+
+
+<h3>Matching</h3>
+
+<p><code>=~</code> &ndash; the matching operator</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;String has vowels&quot;</span> <span class="k">if</span> <span class="s2">&quot;This is a test&quot;</span> <span class="o">=~</span> <span class="sr">/[aeiou]/</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>match</code> returns a <code>MatchData</code> object that can be accessed like an array.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;This is a test&quot;</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sr">/(\w+) (\w+)/</span><span class="p">)</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">x</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">x</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">x</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">This</span> <span class="n">is</span>
+</span><span class='line'><span class="no">This</span>
+</span><span class='line'><span class="n">is</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 <h3>References</h3>
 
 <ul>
 <li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-sub">sub()</a></li>
 <li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-gsub">gsub()</a></li>
 <li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-scan">scan()</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-match">match()</a></li>
 </ul>
 
 </div>

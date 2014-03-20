@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CH3 | The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/blog/categories/ch3/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-19T23:46:05+08:00</updated>
+  <updated>2014-03-20T23:40:33+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -18,11 +18,14 @@
     <link href="http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions/"/>
     <updated>2014-03-19T22:31:54+08:00</updated>
     <id>http://rubyrookie.kumaya.co/blog/2014/03/19/string-basic-regular-expressions</id>
-    <content type="html"><![CDATA[<p>This article is the brief introduction to regex.</p>
+    <content type="html"><![CDATA[<p><em>started from P. 44</em></p>
+
+<p>This article is the brief introduction to regex.</p>
 
 <ul>
 <li>Substitutions &ndash; <code>.sub()</code></li>
 <li>Iterations &ndash; <code>.scan()</code></li>
+<li>Matching</li>
 </ul>
 
 
@@ -120,12 +123,98 @@ te
 st
 </code></p>
 
+<h3>Basic Special Characters and Symbols Within Regular Expressions</h3>
+
+<table>
+<thead>
+<tr>
+<th>Character </th>
+<th> Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>^  </td>
+<td> Anchor, the begining of a line</td>
+</tr>
+<tr>
+<td>$  </td>
+<td> Anchor, the end of a line</td>
+</tr>
+<tr>
+<td>\A </td>
+<td> Anchor, the start of a string</td>
+</tr>
+<tr>
+<td>\Z </td>
+<td> Anchor, the end of a string</td>
+</tr>
+<tr>
+<td>.  </td>
+<td> Any character </td>
+</tr>
+<tr>
+<td>\w </td>
+<td> Any letter, digit, or underscore</td>
+</tr>
+<tr>
+<td>\W </td>
+<td> Anything that <code>\w</code> doesn&rsquo;t match</td>
+</tr>
+<tr>
+<td>\d </td>
+<td> Any digit</td>
+</tr>
+<tr>
+<td>\D </td>
+<td> Non-digit</td>
+</tr>
+<tr>
+<td>\s </td>
+<td> White space, tab, newline</td>
+</tr>
+<tr>
+<td>\S </td>
+<td> non-whitespace</td>
+</tr>
+</tbody>
+</table>
+
+
+<br/><br/>
+
+
+<h3>Matching</h3>
+
+<p><code>=~</code> &ndash; the matching operator</p>
+
+<p><code>ruby
+puts "String has vowels" if "This is a test" =~ /[aeiou]/
+</code>
+<code>match</code> returns a <code>MatchData</code> object that can be accessed like an array.</p>
+
+<p><code>ruby
+x = "This is a test".match(/(\w+) (\w+)/)
+puts x[0]
+puts x[1]
+puts x[2]
+</code></p>
+
+<p>will get</p>
+
+<p><code>
+This is
+This
+is
+</code></p>
+
 <h3>References</h3>
 
 <ul>
 <li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-sub">sub()</a></li>
 <li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-gsub">gsub()</a></li>
 <li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-scan">scan()</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.0/String.html#method-i-match">match()</a></li>
 </ul>
 
 ]]></content>
