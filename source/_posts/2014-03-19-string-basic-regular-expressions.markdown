@@ -6,10 +6,13 @@ comments: true
 categories: [CH3, String, regex] 
 ---
 
+*started from P. 44*
+
 This article is the brief introduction to regex.
 
 - Substitutions - `.sub()`
 - Iterations - `.scan()`
+- Matching
 
 <!-- more -->
 
@@ -102,9 +105,51 @@ is
 te
 st
 ```
+### Basic Special Characters and Symbols Within Regular Expressions
+
+Character | Meaning
+--------- | -------
+^  | Anchor, the begining of a line
+$  | Anchor, the end of a line
+\A | Anchor, the start of a string
+\Z | Anchor, the end of a string
+.  | Any character 
+\w | Any letter, digit, or underscore
+\W | Anything that `\w` doesn't match
+\d | Any digit
+\D | Non-digit
+\s | White space, tab, newline
+\S | non-whitespace
+
+<br/><br/>
+
+### Matching
+
+`=~` - the matching operator
+
+```ruby
+puts "String has vowels" if "This is a test" =~ /[aeiou]/
+```
+`match` returns a `MatchData` object that can be accessed like an array.
+
+```ruby
+x = "This is a test".match(/(\w+) (\w+)/)
+puts x[0]
+puts x[1]
+puts x[2]
+```
+
+will get
+
+```
+This is
+This
+is
+```
 
 ### References
 
 - [sub()](http://www.ruby-doc.org/core-2.1.0/String.html#method-i-sub)
 - [gsub()](http://www.ruby-doc.org/core-2.1.0/String.html#method-i-gsub)
 - [scan()](http://www.ruby-doc.org/core-2.1.0/String.html#method-i-scan)
+- [match()](http://www.ruby-doc.org/core-2.1.0/String.html#method-i-match)
