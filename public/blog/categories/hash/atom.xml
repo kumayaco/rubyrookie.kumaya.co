@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Hash | The Ruby Rookie Notes]]></title>
+  <link href="http://rubyrookie.kumaya.co/blog/categories/hash/atom.xml" rel="self"/>
+  <link href="http://rubyrookie.kumaya.co/"/>
+  <updated>2014-03-25T23:05:01+08:00</updated>
+  <id>http://rubyrookie.kumaya.co/</id>
+  <author>
+    <name><![CDATA[Vincent Chen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hashes]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/25/hashes/"/>
+    <updated>2014-03-25T22:28:11+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/25/hashes</id>
+    <content type="html"><![CDATA[<p><em>started from P. 56</em></p>
+
+<p>A <code>Hash</code> is a <em>dictionary-like</em> collection of unique <code>key</code>s and their <code>value</code>s. Also called associative arrays, they are similar to <code>Array</code>s, but where an <code>Array</code> uses integers as its index, a <code>Hash</code> allows you to use <strong>any object type</strong>.</p>
+
+<!-- more -->
+
+
+<h3>Basic Miscs</h3>
+
+<p>Using <code>key</code>s to map to <code>value</code>s and construct a dictionary</p>
+
+<p><code>ruby
+dictionary = {'Fish' =&gt; 'in water', 'Rabbit' =&gt; 'not in water'}
+</code></p>
+
+<h4>Get Size</h4>
+
+<p><code>ruby
+puts dictionary.size
+</code></p>
+
+<p><code>sh
+2
+</code></p>
+
+<h4>Get Value by Key</h4>
+
+<p><code>ruby
+puts dictionary['Fish']
+</code></p>
+
+<p>will get</p>
+
+<p><code>
+in water
+</code></p>
+
+<h4>Assign New Value</h4>
+
+<p><code>ruby
+dictionary['Rabbit'] = "fluffy animal"
+puts dictionary['Rabbit']
+</code></p>
+
+<p>will get</p>
+
+<p><code>
+fluffy animal
+</code></p>
+
+<h3>Hash Iteration</h3>
+
+<p>using <code>each</code> just like <code>Array</code> does</p>
+
+<p><code>ruby
+a = { "a" =&gt; 1, "b" =&gt; 2 }
+a.each {|key, value| puts "#{key} equals #{value}"}
+</code></p>
+
+<p>will get</p>
+
+<p><code>
+a equals 1
+b equals 2
+</code></p>
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Hash.html"><code>Hash</code></a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CH3 | The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/blog/categories/ch3/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-20T23:40:33+08:00</updated>
+  <updated>2014-03-25T23:05:01+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -12,6 +12,389 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Hashes]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/25/hashes/"/>
+    <updated>2014-03-25T22:28:11+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/25/hashes</id>
+    <content type="html"><![CDATA[<p><em>started from P. 56</em></p>
+
+<p>A <code>Hash</code> is a <em>dictionary-like</em> collection of unique <code>key</code>s and their <code>value</code>s. Also called associative arrays, they are similar to <code>Array</code>s, but where an <code>Array</code> uses integers as its index, a <code>Hash</code> allows you to use <strong>any object type</strong>.</p>
+
+<!-- more -->
+
+
+<h3>Basic Miscs</h3>
+
+<p>Using <code>key</code>s to map to <code>value</code>s and construct a dictionary</p>
+
+<p><code>ruby
+dictionary = {'Fish' =&gt; 'in water', 'Rabbit' =&gt; 'not in water'}
+</code></p>
+
+<h4>Get Size</h4>
+
+<p><code>ruby
+puts dictionary.size
+</code></p>
+
+<p><code>sh
+2
+</code></p>
+
+<h4>Get Value by Key</h4>
+
+<p><code>ruby
+puts dictionary['Fish']
+</code></p>
+
+<p>will get</p>
+
+<p><code>
+in water
+</code></p>
+
+<h4>Assign New Value</h4>
+
+<p><code>ruby
+dictionary['Rabbit'] = "fluffy animal"
+puts dictionary['Rabbit']
+</code></p>
+
+<p>will get</p>
+
+<p><code>
+fluffy animal
+</code></p>
+
+<h3>Hash Iteration</h3>
+
+<p>using <code>each</code> just like <code>Array</code> does</p>
+
+<p><code>ruby
+a = { "a" =&gt; 1, "b" =&gt; 2 }
+a.each {|key, value| puts "#{key} equals #{value}"}
+</code></p>
+
+<p>will get</p>
+
+<p><code>
+a equals 1
+b equals 2
+</code></p>
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Hash.html"><code>Hash</code></a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Arrays and Lists]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/22/arrays-and-lists/"/>
+    <updated>2014-03-22T08:43:13+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/22/arrays-and-lists</id>
+    <content type="html"><![CDATA[<p><em>started from P. 50</em></p>
+
+<!-- more -->
+
+
+<h3>Basic Arrays</h3>
+
+<h4>Array Literal</h4>
+
+<p><code>ruby
+x = [1, 2, 3, 4]
+//   ^  ^  ^  ^  elements
+</code></p>
+
+<p>and use <em>element reference</em>, just like most of programming languages do, to access content in an array:</p>
+
+<p><code>ruby
+puts x[2]
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+3
+</code></p>
+
+<h4>Operations</h4>
+
+<p>based on the array created in the first section of this article.</p>
+
+<p>```ruby
+x[2] += 1
+puts x[2]</p>
+
+<p>x[2] = &ldquo;Fish&rdquo; * 3
+puts x[2]
+```</p>
+
+<p>will get</p>
+
+<p><code>sh
+4
+FishFishFish
+</code></p>
+
+<h4>Push Data into an Array</h4>
+
+<p>use <code>&lt;&lt;</code> operator or <code>push()</code> method</p>
+
+<p>```ruby
+x = [] // create an empty array at first</p>
+
+<p>x &lt;&lt; &ldquo;Word&rdquo;</p>
+
+<p>// or</p>
+
+<p>x.push(&ldquo;Word&rdquo;)</p>
+
+<p>// then</p>
+
+<p>x.pop() // Use LIFO, pop the last-postion-element in an array
+x.length()</p>
+
+<p>```</p>
+
+<p>will both get</p>
+
+<p><code>sh
+Word
+1
+</code></p>
+
+<h4>Join the Elements in Array</h4>
+
+<p><code>ruby
+x = ["Join", "The", "Elements"]
+puts x.join
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+JoinTheElements
+</code></p>
+
+<p><strong>And</strong> to be more clear, you can add your owned seperator</p>
+
+<p><code>ruby
+puts x.join(', ')
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+Join, The, Elements
+</code></p>
+
+<h3>Process String into Array</h3>
+
+<p>As the <a href="/blog/2014/03/19/string-basic-regular-expressions/">previous article</a> about basic regex, you can put the results as elements into array.</p>
+
+<p><code>ruby
+puts "This is a Test".scan(/\w/).join(", ")
+</code>
+will get</p>
+
+<p><code>sh
+T, h, i, s, i, s, a, T, e, s, t
+</code></p>
+
+<p>Using <code>splite()</code> to seperate the string into array by given regular expression.</p>
+
+<p><code>ruby
+puts "This is a Test".split(/\s/).join(", ")
+</code></p>
+
+<p>The regular expression <code>/\s/</code> is to let method splitting based on space. And this will get:</p>
+
+<p><code>sh
+This, is, a, Test
+</code></p>
+
+<h3>Array Iteration</h3>
+
+<p>There are two simple ways to iterate arrays: <code>each</code> and <code>collect</code>. Using pipelines, <code>||</code>, to catch the values.</p>
+
+<h4><code>each</code></h4>
+
+<p><code>ruby
+["a","b","c"].each do |element| puts element end
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+a
+b
+c
+</code></p>
+
+<h4><code>collect</code></h4>
+
+<p><code>ruby
+[1,2,3].collect do |element| element*2 end
+</code></p>
+
+<p>will get returned array with modified elements</p>
+
+<p><code>sh
+[2,4,6]
+</code></p>
+
+<p><code>map</code> is the alias of <code>collect</code>, for more, please read this <a href="http://stackoverflow.com/a/5254764">answer</a>.</p>
+
+<h4>Old Fasion is also Great</h4>
+
+<p>```ruby
+a = [1,2,3,4]
+i = 0</p>
+
+<p>while (i &lt; a.length)</p>
+
+<pre><code>puts a[i]
+i += 1
+</code></pre>
+
+<p>end
+```</p>
+
+<p>will also get the same result as using <code>each</code></p>
+
+<p><code>sh
+1
+2
+3
+4
+</code></p>
+
+<h3>Others about Array</h3>
+
+<h4>Addition and Substraction</h4>
+
+<p>Giving two arrays,</p>
+
+<p><code>ruby
+a = [1,2,3]
+b = [1,3]
+</code></p>
+
+<p>Using addition</p>
+
+<p><code>ruby
+a + b
+</code></p>
+
+<p>will get the combined array</p>
+
+<p><code>sh
+[1,2,3,1,3]
+</code></p>
+
+<p>Using substraction</p>
+
+<p><code>ruby
+a - b
+</code></p>
+
+<p>will get the array</p>
+
+<p><code>sh
+[2]
+</code></p>
+
+<h4>Check is Empty</h4>
+
+<p>Using <code>empty?</code></p>
+
+<p><code>ruby
+a = [1,2]
+a.empty?
+</code></p>
+
+<p>will get</p>
+
+<p><code>
+false
+</code></p>
+
+<h4>Check an Array has a Certain Element</h4>
+
+<p>Using <code>include?</code></p>
+
+<p><code>ruby
+a = [1,2,3]
+puts x.include?("x")
+puts x.include?(3)
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+false
+true
+</code></p>
+
+<h4>Accessiong the First and Last Elements</h4>
+
+<p><code>ruby
+a = [1,2,3]
+puts x.first
+puts x.last
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+1
+3
+</code></p>
+
+<h5>More</h5>
+
+<p><code>ruby
+a = [1,2,3]
+puts a.first(2).join(", ")
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+1, 2
+</code></p>
+
+<h4>Reverse</h4>
+
+<p><code>ruby
+a = [1,2,3]
+puts a.reverse
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+[3,2,1]
+</code></p>
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Array.html"><code>Array</code></a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Array.html#method-i-push"><code>push()</code></a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Array.html#method-i-join"><code>join()</code></a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Array.html#method-i-split"><code>split()</code></a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[String: Basic Regular Expressions]]></title>
@@ -346,205 +729,6 @@ puts my_string
 <p><code>sh
 It's a bad bad bad bad bad world
 </code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Text and Strings]]></title>
-    <link href="http://rubyrookie.kumaya.co/blog/2014/03/17/text-and-strings/"/>
-    <updated>2014-03-17T22:43:52+08:00</updated>
-    <id>http://rubyrookie.kumaya.co/blog/2014/03/17/text-and-strings</id>
-    <content type="html"><![CDATA[<p><em>start from P. 39</em></p>
-
-<p>Manipulating text and content.</p>
-
-<ul>
-<li>String Literals</li>
-</ul>
-
-
-<!-- more -->
-
-
-<h2>String Literals</h2>
-
-<p>First, the <code>String</code> class:</p>
-
-<p><code>ruby
-puts "Hello, world!".class
-</code></p>
-
-<p>will get</p>
-
-<p><code>sh
-String
-</code></p>
-
-<h3>Basic expressions just like <code>Number</code>s</h3>
-
-<p><code>ruby
-x = "Test"
-y = "String"
-puts "Success!" if x + y == "TestString"
-</code></p>
-
-<p>result:</p>
-
-<p><code>sh
-Success!
-</code></p>
-
-<h3>Multiple Lines</h3>
-
-<p>You can wrap your lines with your prefered delimiters.</p>
-
-<p>```ruby
-x = %q{This is first line,
-second line and
-third line}</p>
-
-<p>// or</p>
-
-<p>x = %q!This is first line,
-second line and
-third line!</p>
-
-<p>// or</p>
-
-<p>x = &lt;&lt;END_MY_LINE
-This is first line
-second line and
-third line
-END_MY_LINE</p>
-
-<p>```</p>
-
-<p>For the last example above, &lt;&lt; start the string literal.</p>
-
-<h3>String Expressions</h3>
-
-<p>Just like the previous section, <code>String</code> could use expressions and act like <code>Number</code>.</p>
-
-<p>```ruby
-puts &ldquo;abc&rdquo;*5
-// abcabcabcabcabc</p>
-
-<p>puts &ldquo;x&rdquo; > &ldquo;y&rdquo;
-// false</p>
-
-<p>puts &ldquo;y&rdquo; > &ldquo;x&rdquo;
-// true
-```</p>
-
-<h4>ASCII</h4>
-
-<p><code>ruby
-puts ?x
-puts 120.chr
-</code>
-First line will convert character to <code>ASCII</code> value, the second line will convert the value to character based on <code>ASCII</code>:
-<code>sh
-120
-x
-</code></p>
-
-<h2>References</h2>
-
-<ul>
-<li>class <a href="http://www.ruby-doc.org/core-2.1.1/String.html">String</a> <em>base on ruby 2.1.1</em></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Numbers: Floating Point and Constant]]></title>
-    <link href="http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant/"/>
-    <updated>2014-03-12T22:55:28+08:00</updated>
-    <id>http://rubyrookie.kumaya.co/blog/2014/03/12/numbers-floating-point-and-constant</id>
-    <content type="html"><![CDATA[<p><em>start from P. 37</em></p>
-
-<ul>
-<li>Floating Point Numbers</li>
-<li>Constants</li>
-</ul>
-
-
-<!-- more -->
-
-
-<h2>Floating Point Numbers</h2>
-
-<p>If you want to devide integer numbers and show as float, you need to add <code>.0</code> to the numbers:</p>
-
-<p><strong>Original</strong> &ndash; integer divide integer will producing integer.</p>
-
-<p><code>ruby
-puts 10 / 3
-</code></p>
-
-<p>will producing:</p>
-
-<p><code>sh
-3
-</code></p>
-
-<p><strong>Adding</strong> <code>.0</code> to treat as floating point numbers:</p>
-
-<p><code>ruby
-puts 10.0 / 3.0
-</code></p>
-
-<p>will producing:</p>
-
-<p><code>sh
-3.333333333333333
-</code></p>
-
-<h3>Convertion of types</h3>
-
-<p>Using <code>to_f</code> and <code>to_i</code> or relevant methods to convert types.</p>
-
-<p><code>ruby
-x = 10
-y = 3
-puts x.to_f / y.to_f
-</code></p>
-
-<p>will producing:</p>
-
-<p><code>sh
-3.33333333333333
-</code></p>
-
-<p>Convert to integer like this:</p>
-
-<p><code>ruby
-puts 5.7.to_i
-</code>
-and get:
-<code>sh
-5
-</code></p>
-
-<h2>Constants</h2>
-
-<p>Make the variable name beginning with a capital letter to let it is a constant.</p>
-
-<p><code>ruby
-Pi = 3.14159
-</code></p>
-
-<h3>The Class Name</h3>
-
-<p>The class name start with capital letter as well, it means once th class is defined, it is a constant part of the program and therefore acts as a constant, too.</p>
-
-<h2>References</h2>
-
-<ul>
-<li><a href="http://www.ruby-doc.org/core-2.1.1/Float.html">Float</a></li>
-</ul>
-
 ]]></content>
   </entry>
   

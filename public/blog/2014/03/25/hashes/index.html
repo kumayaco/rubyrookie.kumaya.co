@@ -5,16 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>String: Interpolation - The Ruby Rookie Notes</title>
+  <title>Hashes - The Ruby Rookie Notes</title>
   <meta name="author" content="Vincent Chen">
 
   
-  <meta name="description" content="start from P. 43 Using #{} to wrap the variables or expressions in, will print out what you have inside. 1
-2
-3
-x = 10
-y = 20
-puts &quot;#{x} + #{y &hellip;">
+  <meta name="description" content="started from P. 56 A Hash is a dictionary-like collection of unique keys and their values. Also called associative arrays, they are similar to Arrays &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,7 +18,7 @@ puts &quot;#{x} + #{y &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rubyrookie.kumaya.co/blog/2014/03/19/string-interpolation">
+  <link rel="canonical" href="http://rubyrookie.kumaya.co/blog/2014/03/25/hashes">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="The Ruby Rookie Notes" type="application/atom+xml">
@@ -85,7 +80,7 @@ puts &quot;#{x} + #{y &hellip;">
   
   <header>
     
-      <h1 class="entry-title">String: Interpolation</h1>
+      <h1 class="entry-title">Hashes</h1>
     
     
       <p class="meta">
@@ -101,66 +96,98 @@ puts &quot;#{x} + #{y &hellip;">
   
 
 
-<time datetime="2014-03-19T00:00:54+08:00" pubdate data-updated="true">Mar 19<span>th</span>, 2014</time>
+<time datetime="2014-03-25T22:28:11+08:00" pubdate data-updated="true">Mar 25<span>th</span>, 2014</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><em>start from P. 43</em></p>
+<div class="entry-content"><p><em>started from P. 56</em></p>
+
+<p>A <code>Hash</code> is a <em>dictionary-like</em> collection of unique <code>key</code>s and their <code>value</code>s. Also called associative arrays, they are similar to <code>Array</code>s, but where an <code>Array</code> uses integers as its index, a <code>Hash</code> allows you to use <strong>any object type</strong>.</p>
 
 <!-- more -->
 
 
-<p>Using <code>#{}</code> to wrap the variables or expressions in, will print out what you have inside.</p>
+<h3>Basic Miscs</h3>
+
+<p>Using <code>key</code>s to map to <code>value</code>s and construct a dictionary</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">dictionary</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Fish&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;in water&#39;</span><span class="p">,</span> <span class="s1">&#39;Rabbit&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;not in water&#39;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Get Size</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="n">dictionary</span><span class="o">.</span><span class="n">size</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>2
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Get Value by Key</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="n">dictionary</span><span class="o">[</span><span class="s1">&#39;Fish&#39;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">in</span> <span class="n">water</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Assign New Value</h4>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-</span><span class='line'><span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
-</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> + </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="s2"> = </span><span class="si">#{</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">dictionary</span><span class="o">[</span><span class="s1">&#39;Rabbit&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;fluffy animal&quot;</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">dictionary</span><span class="o">[</span><span class="s1">&#39;Rabbit&#39;</span><span class="o">]</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>will get;</p>
+<p>will get</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>10 + <span class="nv">20</span> <span class="o">=</span> 30
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">fluffy</span> <span class="n">animal</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>In the other hand, you can do this as well:</p>
+<h3>Hash Iteration</h3>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s2">&quot;100 * 5 = </span><span class="si">#{</span><span class="mi">100</span><span class="o">*</span><span class="mi">5</span><span class="si">}</span><span class="s2">&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>will get:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">100</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">500</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Combo</h3>
-
-<p>Combine with other functionalities mentioned before, we can come up with more complicated statement like this:</p>
+<p>using <code>each</code> just like <code>Array</code> does</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">my_string</span> <span class="s2">&quot;It&#39;s a </span><span class="si">#{</span><span class="s2">&quot;bad &quot;</span> <span class="o">*</span> <span class="mi">5</span><span class="si">}</span><span class="s2">world&quot;</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">my_string</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;a&quot;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="p">}</span>
+</span><span class='line'><span class="n">a</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">|</span> <span class="nb">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">key</span><span class="si">}</span><span class="s2"> equals </span><span class="si">#{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>will get:</p>
+<p>will get</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>It<span class="err">&#39;</span>s a bad bad bad bad bad world
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">a</span> <span class="n">equals</span> <span class="mi">1</span>
+</span><span class='line'><span class="n">b</span> <span class="n">equals</span> <span class="mi">2</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Hash.html"><code>Hash</code></a></li>
+</ul>
 
 </div>
 
@@ -184,12 +211,12 @@ puts &quot;#{x} + #{y &hellip;">
   
 
 
-<time datetime="2014-03-19T00:00:54+08:00" pubdate data-updated="true">Mar 19<span>th</span>, 2014</time>
+<time datetime="2014-03-25T22:28:11+08:00" pubdate data-updated="true">Mar 25<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/ch3/'>CH3</a>, <a class='category' href='/blog/categories/string/'>String</a>
+    <a class='category' href='/blog/categories/ch3/'>CH3</a>, <a class='category' href='/blog/categories/hash/'>hash</a>
   
 </span>
 
@@ -198,7 +225,7 @@ puts &quot;#{x} + #{y &hellip;">
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyrookie.kumaya.co/blog/2014/03/19/string-interpolation/" data-via="vince78718" data-counturl="http://rubyrookie.kumaya.co/blog/2014/03/19/string-interpolation/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyrookie.kumaya.co/blog/2014/03/25/hashes/" data-via="vince78718" data-counturl="http://rubyrookie.kumaya.co/blog/2014/03/25/hashes/" >Tweet</a>
   
   
   
@@ -209,10 +236,8 @@ puts &quot;#{x} + #{y &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/03/17/text-and-strings/" title="Previous Post: Text and Strings">&laquo; Text and Strings</a>
+        <a class="basic-alignment left" href="/blog/2014/03/22/arrays-and-lists/" title="Previous Post: Arrays and Lists">&laquo; Arrays and Lists</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/03/19/string-manipulations/" title="Next Post: String: Manipulations">String: Manipulations &raquo;</a>
       
     </p>
   </footer>
@@ -278,8 +303,8 @@ puts &quot;#{x} + #{y &hellip;">
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://rubyrookie.kumaya.co/blog/2014/03/19/string-interpolation/';
-        var disqus_url = 'http://rubyrookie.kumaya.co/blog/2014/03/19/string-interpolation/';
+        var disqus_identifier = 'http://rubyrookie.kumaya.co/blog/2014/03/25/hashes/';
+        var disqus_url = 'http://rubyrookie.kumaya.co/blog/2014/03/25/hashes/';
         var disqus_script = 'embed.js';
       
     (function () {
