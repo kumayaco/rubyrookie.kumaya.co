@@ -3,5 +3,75 @@ layout: post
 title: "Hashes"
 date: 2014-03-25 22:28:11 +0800
 comments: true
-categories: 
+categories: [CH3, hash] 
 ---
+
+*started from P. 56*
+
+A `Hash` is a *dictionary-like* collection of unique `key`s and their `value`s. Also called associative arrays, they are similar to `Array`s, but where an `Array` uses integers as its index, a `Hash` allows you to use **any object type**.
+
+<!-- more -->
+
+### Basic Miscs
+
+Using `key`s to map to `value`s and construct a dictionary
+
+```ruby
+dictionary = {'Fish' => 'in water', 'Rabbit' => 'not in water'}
+```
+
+#### Get Size
+
+```ruby
+puts dictionary.size
+```
+
+```sh
+2
+```
+
+#### Get Value by Key
+
+```ruby
+puts dictionary['Fish']
+```
+
+will get
+
+```
+in water
+```
+
+#### Assign New Value
+
+
+```ruby
+dictionary['Rabbit'] = "fluffy animal"
+puts dictionary['Rabbit']
+```
+
+will get
+
+```
+fluffy animal
+```
+
+### Hash Iteration
+
+using `each` just like `Array` does
+
+```ruby
+a = { "a" => 1, "b" => 2 }
+a.each {|key, value| puts "#{key} equals #{value}"}
+```
+
+will get
+
+```
+a equals 1
+b equals 2
+```
+
+### References
+
+- [`Hash`](http://www.ruby-doc.org/core-2.1.1/Hash.html)
