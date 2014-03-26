@@ -72,6 +72,35 @@ a equals 1
 b equals 2
 ```
 
+### Other Hash Methods
+
+#### Get Keys
+
+```ruby
+a = { "a" => 1, "b" => 2 }
+puts x.keys
+```
+
+will get
+
+```sh
+["a","b"]
+```
+
+### Delete Elements
+
+```ruby
+a = { "a" => 1, "b" => 2 }
+x.delete("a")
+p x
+```
+
+will get
+
+```sh
+{"b"=>2}
+```
+
 ### References
 
 - [`Hash`](http://www.ruby-doc.org/core-2.1.1/Hash.html)
