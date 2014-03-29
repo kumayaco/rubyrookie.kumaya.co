@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CH3 | The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/blog/categories/ch3/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-25T23:05:01+08:00</updated>
+  <updated>2014-03-29T23:18:55+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -82,6 +82,61 @@ a.each {|key, value| puts "#{key} equals #{value}"}
 <p><code>
 a equals 1
 b equals 2
+</code></p>
+
+<h3>Other Hash Methods</h3>
+
+<h4>Get Keys</h4>
+
+<p><code>ruby
+a = { "a" =&gt; 1, "b" =&gt; 2 }
+puts x.keys
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+["a","b"]
+</code></p>
+
+<h3>Delete Elements</h3>
+
+<p><code>ruby
+a = { "a" =&gt; 1, "b" =&gt; 2 }
+x.delete("a")
+p x
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+{"b"=&gt;2}
+</code></p>
+
+<h4>Delete with Condition</h4>
+
+<p><code>ruby
+a = { "a" =&gt; 100, "b" =&gt; 20 }
+x.delete_if { |key, value| value &lt; 25 }
+p x
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+{"a"=&gt;100}
+</code></p>
+
+<h3>Nested Hashes and Arrays</h3>
+
+<p><code>ruby
+people = {
+ 'vincent' =&gt; {
+  'name' =&gt; 'Vincent Chen',
+  'gender' =&gt; 'male',
+  'languages' =&gt; ['Chinese','English']
+ }
+}
 </code></p>
 
 <h3>References</h3>

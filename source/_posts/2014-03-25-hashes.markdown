@@ -101,6 +101,32 @@ will get
 {"b"=>2}
 ```
 
+#### Delete with Condition
+
+```ruby
+a = { "a" => 100, "b" => 20 }
+x.delete_if { |key, value| value < 25 }
+p x
+```
+
+will get
+
+```sh
+{"a"=>100}
+```
+
+### Nested Hashes and Arrays
+
+```ruby
+people = {
+ 'vincent' => {
+  'name' => 'Vincent Chen',
+  'gender' => 'male',
+  'languages' => ['Chinese','English']
+ }
+}
+```
+
 ### References
 
 - [`Hash`](http://www.ruby-doc.org/core-2.1.1/Hash.html)
