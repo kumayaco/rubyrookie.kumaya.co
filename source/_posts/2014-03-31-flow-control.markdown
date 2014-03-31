@@ -35,7 +35,7 @@ end
 
 ```ruby
 age = 10
-if age < 18
+unless age > 18
  puts "You are too young"
 else
  puts "You are good"
