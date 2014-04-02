@@ -33,11 +33,54 @@ else
 end
 ```
 
+and
+
 ```ruby
 age = 10
 unless age > 18
  puts "You are too young"
 else
  puts "You are good"
+end
+```
+
+will both get
+
+```sh
+You are too young
+```
+
+### `?` and Ternary Operator
+
+#### Basic Pattern
+
+```text
+<condition> ? <result if condition is true> : <result if condition is false>
+```
+
+##### Example
+
+```ruby
+age = 10
+puts "You are a " + (age < 18 ? "child" : "adult")
+```
+
+will get
+
+```sh
+You are a child
+```
+
+### `elseif` and `case/when`
+
+#### `elseif`
+
+```ruby
+if <condition>
+ <statement>
+elseif <condition>
+ <statement>
+else
+ <statement>
 end
 ```
