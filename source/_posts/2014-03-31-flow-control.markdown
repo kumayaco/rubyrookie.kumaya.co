@@ -84,3 +84,43 @@ else
  <statement>
 end
 ```
+
+##### Example
+
+```ruby
+fruit = "orange"
+if fruit == "orange"
+ color = "orange"
+else if fruit == "apple"
+ color = "red"
+else
+ color = "unknown"
+end
+```
+
+#### `case/when`
+
+```ruby
+case <target>
+ when <condition>
+ <statement>
+ when <condition>
+ <statement>
+ else
+ <statement>
+end
+```
+
+##### Example
+
+```ruby
+fruit = "orange"
+color = case fruit
+ when "orange"
+ "orange"
+ when "apple"
+ "red"
+ else
+ "unknown"
+end
+```
