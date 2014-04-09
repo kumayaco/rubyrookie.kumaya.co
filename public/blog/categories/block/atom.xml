@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Block | The Ruby Rookie Notes]]></title>
+  <link href="http://rubyrookie.kumaya.co/blog/categories/block/atom.xml" rel="self"/>
+  <link href="http://rubyrookie.kumaya.co/"/>
+  <updated>2014-04-09T23:57:40+08:00</updated>
+  <id>http://rubyrookie.kumaya.co/</id>
+  <author>
+    <name><![CDATA[Vincent Chen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Flow Control]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/31/flow-control/"/>
+    <updated>2014-03-31T22:19:22+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/31/flow-control</id>
+    <content type="html"><![CDATA[<p><em>started from P. 59</em></p>
+
+<p>Conditions controls are able to be nested.</p>
+
+<ul>
+<li><code>if</code> and <code>unless</code></li>
+<li><code>?</code> and Ternary Operator</li>
+<li><code>elseif</code> and <code>case</code></li>
+<li><code>while</code> and <code>until</code></li>
+<li>code blocks</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3><code>if</code> and <code>unless</code></h3>
+
+<ul>
+<li><code>unless</code> is just the oppsite of <code>if</code></li>
+<li>both support <code>else</code> condition
+
+<ul>
+<li><code>end</code> put at after the full control flow.</li>
+</ul>
+</li>
+</ul>
+
+
+<p><code>ruby
+age = 10
+if age &lt; 18
+ puts "You are too young"
+else
+ puts "You are good"
+end
+</code></p>
+
+<p>and</p>
+
+<p><code>ruby
+age = 10
+unless age &gt; 18
+ puts "You are too young"
+else
+ puts "You are good"
+end
+</code></p>
+
+<p>will both get</p>
+
+<p><code>sh
+You are too young
+</code></p>
+
+<h3><code>?</code> and Ternary Operator</h3>
+
+<h4>Basic Pattern</h4>
+
+<p><code>text
+&lt;condition&gt; ? &lt;result if condition is true&gt; : &lt;result if condition is false&gt;
+</code></p>
+
+<h5>Example</h5>
+
+<p><code>ruby
+age = 10
+puts "You are a " + (age &lt; 18 ? "child" : "adult")
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+You are a child
+</code></p>
+
+<h3><code>elseif</code> and <code>case/when</code></h3>
+
+<h4><code>elseif</code></h4>
+
+<p><code>ruby
+if &lt;condition&gt;
+ &lt;statement&gt;
+elseif &lt;condition&gt;
+ &lt;statement&gt;
+else
+ &lt;statement&gt;
+end
+</code></p>
+
+<h5>Example</h5>
+
+<p><code>ruby
+fruit = "orange"
+if fruit == "orange"
+ color = "orange"
+else if fruit == "apple"
+ color = "red"
+else
+ color = "unknown"
+end
+</code></p>
+
+<h4><code>case/when</code></h4>
+
+<p><code>ruby
+case &lt;target&gt;
+ when &lt;condition&gt;
+ &lt;statement&gt;
+ when &lt;condition&gt;
+ &lt;statement&gt;
+ else
+ &lt;statement&gt;
+end
+</code></p>
+
+<h5>Example</h5>
+
+<p><code>ruby
+fruit = "orange"
+color = case fruit
+ when "orange"
+ "orange"
+ when "apple"
+ "red"
+ else
+ "unknown"
+end
+</code></p>
+
+<h4><code>while</code> and <code>until</code></h4>
+
+<p><code>while</code> and <code>until</code> can loop the code based on the given condition.</p>
+
+<h5><code>while</code></h5>
+
+<p><code>ruby
+x = 1
+while x &lt; 100
+ puts x
+ x = x * 2
+end
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+1
+2
+4
+8
+16
+32
+64
+</code></p>
+
+<h5><code>until</code></h5>
+
+<p><code>until</code> provide the opposite functionality</p>
+
+<p><code>ruby
+x = 1
+until x &gt; 99
+ puts x
+ x = x * 2
+end
+</code></p>
+
+<p>will get the same result like <code>while</code>&rsquo;s</p>
+
+<p><code>sh
+1
+2
+4
+8
+16
+32
+64
+</code></p>
+
+<h5>More Like English</h5>
+
+<p>As <code>if</code> and <code>unless</code>, you can do <code>while</code> and <code>until</code> literally.</p>
+
+<p><code>ruby
+i = 1
+i = i * 2 until i &gt; 1000
+puts i
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+1024
+</code></p>
+
+<h3>Code Blocks</h3>
+
+<p>Code blocks is defined within <code>{</code> and <code>}</code> or <code>do</code> and <code>end</code> delimiters.</p>
+
+<p>More advance, you can write methods with your own handled blocks:</p>
+
+<p>```ruby
+def each_vowel(&amp;code_block)
+ %w{a e i o u}.each { |vowel| code_block.call(vowel) }
+end</p>
+
+<p>each_vowel { |vowel| puts vowel }
+```</p>
+
+<p>will get</p>
+
+<p><code>sh
+a
+e
+i
+o
+u
+</code></p>
+
+<ul>
+<li><code>%w</code> is literal for <code>Arrays</code> (<a href="http://www.zenspider.com/Languages/Ruby/QuickRef.html#arrays">ref</a>)</li>
+<li><code>.call()</code> is a method of <code>Proc</code> class, given parameter(s) will be used in the code block given.</li>
+</ul>
+
+
+<h4><code>lambda</code></h4>
+
+<p><code>lambda</code> is a method from <code>Kernal</code>, it return a <code>Proc</code> object. <a href="http://awaxman11.github.io/blog/2013/08/05/what-is-the-difference-between-a-block/">The difference between both</a>.</p>
+
+<p><code>ruby
+print_something = lambda { |x| puts x}
+print_something.call(100)
+</code></p>
+
+<p>will get</p>
+
+<p><code>sh
+100
+</code></p>
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Proc.html#method-i-call"><code>Proc</code></a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Proc.html"><code>Proc.call()</code></a></li>
+<li><a href="http://www.zenspider.com/Languages/Ruby/QuickRef.html#arrays"><code>Array</code> literal</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Kernel.html#method-i-lambda"><code>Kernal.lambda</code></a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>
