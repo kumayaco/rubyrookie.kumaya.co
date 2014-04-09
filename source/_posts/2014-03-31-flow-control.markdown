@@ -124,3 +124,117 @@ color = case fruit
  "unknown"
 end
 ```
+#### `while` and `until`
+
+`while` and `until` can loop the code based on the given condition.
+
+##### `while`
+
+```ruby
+x = 1
+while x < 100
+ puts x
+ x = x * 2
+end
+```
+
+will get
+
+```sh
+1
+2
+4
+8
+16
+32
+64
+```
+
+##### `until`
+
+`until` provide the opposite functionality
+
+```ruby
+x = 1
+until x > 99
+ puts x
+ x = x * 2
+end
+```
+
+will get the same result like `while`'s
+
+```sh
+1
+2
+4
+8
+16
+32
+64
+```
+
+##### More Like English
+
+As `if` and `unless`, you can do `while` and `until` literally.
+
+```ruby
+i = 1
+i = i * 2 until i > 1000
+puts i
+```
+
+will get
+
+```sh
+1024
+```
+
+### Code Blocks 
+
+Code blocks is defined within `{` and `}` or `do` and `end` delimiters.
+
+More advance, you can write methods with your own handled blocks:
+
+```ruby
+def each_vowel(&code_block)
+ %w{a e i o u}.each { |vowel| code_block.call(vowel) }
+end
+
+each_vowel { |vowel| puts vowel }
+```
+
+will get
+
+```sh
+a
+e
+i
+o
+u
+```
+
+- `%w` is literal for `Arrays` ([ref](http://www.zenspider.com/Languages/Ruby/QuickRef.html#arrays))
+- `.call()` is a method of `Proc` class, given parameter(s) will be used in the code block given.
+
+#### `lambda`
+
+`lambda` is a method from `Kernal`, it return a `Proc` object. [The difference between both](http://awaxman11.github.io/blog/2013/08/05/what-is-the-difference-between-a-block/).
+
+```ruby
+print_something = lambda { |x| puts x}
+print_something.call(100)
+```
+
+will get
+
+```sh
+100
+```
+
+### References
+
+- [`Proc`](http://www.ruby-doc.org/core-2.1.1/Proc.html#method-i-call)
+- [`Proc.call()`](http://www.ruby-doc.org/core-2.1.1/Proc.html)
+- [`Array` literal](http://www.zenspider.com/Languages/Ruby/QuickRef.html#arrays)
+- [`Kernal.lambda`](http://www.ruby-doc.org/core-2.1.1/Kernel.html#method-i-lambda)
