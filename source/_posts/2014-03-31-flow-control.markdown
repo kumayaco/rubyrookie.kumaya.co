@@ -3,7 +3,7 @@ layout: post
 title: "Flow Control"
 date: 2014-03-31 22:19:22 +0800
 comments: true
-categories: [CH3] 
+categories: [CH3, block, Proc] 
 ---
 
 *started from P. 59*
