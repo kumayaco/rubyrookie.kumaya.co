@@ -4,7 +4,7 @@
   <title><![CDATA[The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-03-29T23:20:20+08:00</updated>
+  <updated>2014-04-09T23:52:58+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -12,6 +12,354 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Flow Control]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/03/31/flow-control/"/>
+    <updated>2014-03-31T22:19:22+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/03/31/flow-control</id>
+    <content type="html"><![CDATA[<p><em>started from P. 59</em></p>
+
+<p>Conditions controls are able to be nested.</p>
+
+<ul>
+<li><code>if</code> and <code>unless</code></li>
+<li><code>?</code> and Ternary Operator</li>
+<li><code>elseif</code> and <code>case</code></li>
+<li><code>while</code> and <code>until</code></li>
+<li>code blocks</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h3><code>if</code> and <code>unless</code></h3>
+
+<ul>
+<li><code>unless</code> is just the oppsite of <code>if</code></li>
+<li>both support <code>else</code> condition
+
+<ul>
+<li><code>end</code> put at after the full control flow.</li>
+</ul>
+</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class='line'><span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span>
+</span><span class='line'> <span class="nb">puts</span> <span class="s2">&quot;You are too young&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'> <span class="nb">puts</span> <span class="s2">&quot;You are good&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>and</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class='line'><span class="k">unless</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">18</span>
+</span><span class='line'> <span class="nb">puts</span> <span class="s2">&quot;You are too young&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'> <span class="nb">puts</span> <span class="s2">&quot;You are good&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will both get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>You are too young
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3><code>?</code> and Ternary Operator</h3>
+
+<h4>Basic Pattern</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>&lt;condition&gt; ? &lt;result if condition is true&gt; : &lt;result if condition is false&gt;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Example</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">age</span> <span class="o">=</span> <span class="mi">10</span>
+</span><span class='line'><span class="nb">puts</span> <span class="s2">&quot;You are a &quot;</span> <span class="o">+</span> <span class="p">(</span><span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span> <span class="o">?</span> <span class="s2">&quot;child&quot;</span> <span class="p">:</span> <span class="s2">&quot;adult&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>You are a child
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3><code>elseif</code> and <code>case/when</code></h3>
+
+<h4><code>elseif</code></h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">if</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span>
+</span><span class='line'> <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+</span><span class='line'><span class="n">elseif</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span>
+</span><span class='line'> <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'> <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Example</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">fruit</span> <span class="o">=</span> <span class="s2">&quot;orange&quot;</span>
+</span><span class='line'><span class="k">if</span> <span class="n">fruit</span> <span class="o">==</span> <span class="s2">&quot;orange&quot;</span>
+</span><span class='line'> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;orange&quot;</span>
+</span><span class='line'><span class="k">else</span> <span class="k">if</span> <span class="n">fruit</span> <span class="o">==</span> <span class="s2">&quot;apple&quot;</span>
+</span><span class='line'> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;red&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;unknown&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4><code>case/when</code></h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">case</span> <span class="o">&lt;</span><span class="n">target</span><span class="o">&gt;</span>
+</span><span class='line'> <span class="k">when</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span>
+</span><span class='line'> <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+</span><span class='line'> <span class="k">when</span> <span class="o">&lt;</span><span class="n">condition</span><span class="o">&gt;</span>
+</span><span class='line'> <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+</span><span class='line'> <span class="k">else</span>
+</span><span class='line'> <span class="o">&lt;</span><span class="n">statement</span><span class="o">&gt;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Example</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">fruit</span> <span class="o">=</span> <span class="s2">&quot;orange&quot;</span>
+</span><span class='line'><span class="n">color</span> <span class="o">=</span> <span class="k">case</span> <span class="n">fruit</span>
+</span><span class='line'> <span class="k">when</span> <span class="s2">&quot;orange&quot;</span>
+</span><span class='line'> <span class="s2">&quot;orange&quot;</span>
+</span><span class='line'> <span class="k">when</span> <span class="s2">&quot;apple&quot;</span>
+</span><span class='line'> <span class="s2">&quot;red&quot;</span>
+</span><span class='line'> <span class="k">else</span>
+</span><span class='line'> <span class="s2">&quot;unknown&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4><code>while</code> and <code>until</code></h4>
+
+<p><code>while</code> and <code>until</code> can loop the code based on the given condition.</p>
+
+<h5><code>while</code></h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">100</span>
+</span><span class='line'> <span class="nb">puts</span> <span class="n">x</span>
+</span><span class='line'> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>4
+</span><span class='line'>8
+</span><span class='line'>16
+</span><span class='line'>32
+</span><span class='line'>64
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5><code>until</code></h5>
+
+<p><code>until</code> provide the opposite functionality</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="k">until</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">99</span>
+</span><span class='line'> <span class="nb">puts</span> <span class="n">x</span>
+</span><span class='line'> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get the same result like <code>while</code>&rsquo;s</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>1
+</span><span class='line'>2
+</span><span class='line'>4
+</span><span class='line'>8
+</span><span class='line'>16
+</span><span class='line'>32
+</span><span class='line'>64
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>More Like English</h5>
+
+<p>As <code>if</code> and <code>unless</code>, you can do <code>while</code> and <code>until</code> literally.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'><span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">until</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1000</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">i</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>1024
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Code Blocks</h3>
+
+<p>Code blocks is defined within <code>{</code> and <code>}</code> or <code>do</code> and <code>end</code> delimiters.</p>
+
+<p>More advance, you can write methods with your own handled blocks:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">each_vowel</span><span class="p">(</span><span class="o">&amp;</span><span class="n">code_block</span><span class="p">)</span>
+</span><span class='line'> <span class="sx">%w{a e i o u}</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span> <span class="o">|</span><span class="n">vowel</span><span class="o">|</span> <span class="n">code_block</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">vowel</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">each_vowel</span> <span class="p">{</span> <span class="o">|</span><span class="n">vowel</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">vowel</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>a
+</span><span class='line'>e
+</span><span class='line'>i
+</span><span class='line'>o
+</span><span class='line'>u
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><code>%w</code> is literal for <code>Arrays</code> (<a href="http://www.zenspider.com/Languages/Ruby/QuickRef.html#arrays">ref</a>)</li>
+<li><code>.call()</code> is a method of <code>Proc</code> class, given parameter(s) will be used in the code block given.</li>
+</ul>
+
+
+<h4><code>lambda</code></h4>
+
+<p><code>lambda</code> is a method from <code>Kernal</code>, it return a <code>Proc</code> object. <a href="http://awaxman11.github.io/blog/2013/08/05/what-is-the-difference-between-a-block/">The difference between both</a>.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">print_something</span> <span class="o">=</span> <span class="nb">lambda</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span><span class="p">}</span>
+</span><span class='line'><span class="n">print_something</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>100
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Proc.html#method-i-call"><code>Proc</code></a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Proc.html"><code>Proc.call()</code></a></li>
+<li><a href="http://www.zenspider.com/Languages/Ruby/QuickRef.html#arrays"><code>Array</code> literal</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Kernel.html#method-i-lambda"><code>Kernal.lambda</code></a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hashes]]></title>
