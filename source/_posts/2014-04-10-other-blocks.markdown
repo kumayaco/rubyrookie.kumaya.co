@@ -46,7 +46,17 @@ will get
 
 ### Symbols
 
+Symbols are abstract references represented, by a short string prefixed with a colon.
 
+```ruby
+:[id_name]
+```
+
+- Symbols are useful when using as key of hashes
+
+```ruby
+s = { :key => 'value' }
+```
 
 ### References
 
