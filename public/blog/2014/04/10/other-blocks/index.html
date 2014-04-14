@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Basic Comparison - The Ruby Rookie Notes</title>
+  <title>Other Blocks - The Ruby Rookie Notes</title>
   <meta name="author" content="Vincent Chen">
 
   
-  <meta name="description" content="Full List of Comparison Comparison Meaning x &gt; y Greater than, 大於 x &lt; y Less than, 小於 x == y Equal to, 等於 x &gt;= y Greater than or equal to, &hellip;">
+  <meta name="description" content="Date and Time Time are able to using &lt; or &gt; to compare time. 1
+puts Time.now will get 1
+2014-04-11 00:01:31 +0800 Other methods Time.local( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://rubyrookie.kumaya.co/blog/2014/03/11/basic-comparison">
+  <link rel="canonical" href="http://rubyrookie.kumaya.co/blog/2014/04/10/other-blocks">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="The Ruby Rookie Notes" type="application/atom+xml">
@@ -80,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Basic Comparison</h1>
+      <h1 class="entry-title">Other Blocks</h1>
     
     
       <p class="meta">
@@ -96,7 +98,7 @@
   
 
 
-<time datetime="2014-03-11T21:48:54+08:00" pubdate data-updated="true">Mar 11<span>th</span>, 2014</time>
+<time datetime="2014-04-10T23:56:11+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2014</time>
         
       </p>
     
@@ -106,46 +108,78 @@
 <div class="entry-content"><!-- more -->
 
 
-<h2>Full List of Comparison</h2>
+<h3>Date and Time</h3>
 
-<table>
-<thead>
-<tr>
-<th> Comparison </th>
-<th> Meaning </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> <code>x &gt; y</code> </td>
-<td> Greater than, 大於</td>
-</tr>
-<tr>
-<td> <code>x &lt; y</code> </td>
-<td> Less than, 小於 </td>
-</tr>
-<tr>
-<td> <code>x == y</code> </td>
-<td> Equal to, 等於</td>
-</tr>
-<tr>
-<td> <code>x &gt;= y</code> </td>
-<td> Greater than <em>or</em> equal to, 大於或等於</td>
-</tr>
-<tr>
-<td> <code>x &lt;= y</code> </td>
-<td> Less than <em>or</em> equal to, 小於或等於</td>
-</tr>
-<tr>
-<td> <code>x &lt;=&gt; y</code> </td>
-<td> Comparison; return <code>0</code> if <code>x</code> and <code>y</code> are equal, <code>1</code> if <code>x</code> is higher, and <code>-1</code> if <code>y</code> is higher</td>
-</tr>
-<tr>
-<td> <code>x != y</code> </td>
-<td> Not equal to, 不等於</td>
-</tr>
-</tbody>
-</table>
+<p><code>Time</code> are able to using <code>&lt;</code> or <code>&gt;</code> to compare time.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>2014-04-11 00:01:31 +0800
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Other methods</h4>
+
+<ul>
+<li>Time.local(year, month, day, hour, min, sec, msec)</li>
+<li>Time.gm(year, month, day, hour, min, sec, msec)</li>
+<li>Time.utc(year, month, day, hour, min, sec, msec)</li>
+</ul>
+
+
+<h4>Converting</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">epoch_time</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">gm</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span>
+</span><span class='line'><span class="n">t</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">epoch_time</span><span class="p">)</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">t</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">day</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>2007
+</span><span class='line'>5
+</span><span class='line'>1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Symbols</h3>
+
+<p>Symbols are abstract references represented, by a short string prefixed with a colon.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">:</span><span class="o">[</span><span class="n">id_name</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Symbols are useful when using as key of hashes</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:key</span> <span class="o">=&gt;</span> <span class="s1">&#39;value&#39;</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Time.html">Time</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Symbol.html">Symbol</a></li>
+</ul>
 
 </div>
 
@@ -169,12 +203,12 @@
   
 
 
-<time datetime="2014-03-11T21:48:54+08:00" pubdate data-updated="true">Mar 11<span>th</span>, 2014</time>
+<time datetime="2014-04-10T23:56:11+08:00" pubdate data-updated="true">Apr 10<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/ch3/'>CH3</a>
+    <a class='category' href='/blog/categories/ch3/'>CH3</a>, <a class='category' href='/blog/categories/time/'>Time</a>, <a class='category' href='/blog/categories/block/'>block</a>
   
 </span>
 
@@ -183,7 +217,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyrookie.kumaya.co/blog/2014/03/11/basic-comparison/" data-via="vince78718" data-counturl="http://rubyrookie.kumaya.co/blog/2014/03/11/basic-comparison/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://rubyrookie.kumaya.co/blog/2014/04/10/other-blocks/" data-via="vince78718" data-counturl="http://rubyrookie.kumaya.co/blog/2014/04/10/other-blocks/" >Tweet</a>
   
   
   
@@ -194,10 +228,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/03/10/start/" title="Previous Post: Start">&laquo; Start</a>
+        <a class="basic-alignment left" href="/blog/2014/03/31/flow-control/" title="Previous Post: Flow Control">&laquo; Flow Control</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/03/11/looping/" title="Next Post: Looping">Looping &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/04/14/variables-and-constants/" title="Next Post: Variables and Constants">Variables and Constants &raquo;</a>
       
     </p>
   </footer>
@@ -263,8 +297,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://rubyrookie.kumaya.co/blog/2014/03/11/basic-comparison/';
-        var disqus_url = 'http://rubyrookie.kumaya.co/blog/2014/03/11/basic-comparison/';
+        var disqus_identifier = 'http://rubyrookie.kumaya.co/blog/2014/04/10/other-blocks/';
+        var disqus_url = 'http://rubyrookie.kumaya.co/blog/2014/04/10/other-blocks/';
         var disqus_script = 'embed.js';
       
     (function () {

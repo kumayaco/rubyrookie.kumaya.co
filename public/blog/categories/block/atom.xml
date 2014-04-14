@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Block | The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/blog/categories/block/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-04-09T23:57:40+08:00</updated>
+  <updated>2014-04-14T23:56:48+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Other Blocks]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/04/10/other-blocks/"/>
+    <updated>2014-04-10T23:56:11+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/04/10/other-blocks</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+
+<h3>Date and Time</h3>
+
+<p><code>Time</code> are able to using <code>&lt;</code> or <code>&gt;</code> to compare time.</p>
+
+<p><code>ruby
+puts Time.now
+</code></p>
+
+<p>will get</p>
+
+<p><code>text
+2014-04-11 00:01:31 +0800
+</code></p>
+
+<h4>Other methods</h4>
+
+<ul>
+<li>Time.local(year, month, day, hour, min, sec, msec)</li>
+<li>Time.gm(year, month, day, hour, min, sec, msec)</li>
+<li>Time.utc(year, month, day, hour, min, sec, msec)</li>
+</ul>
+
+
+<h4>Converting</h4>
+
+<p><code>ruby
+epoch_time = Time.gm(2007, 5).to_i
+t = Time.at(epoch_time)
+puts t.year, t.month, t.day
+</code></p>
+
+<p>will get</p>
+
+<p><code>text
+2007
+5
+1
+</code></p>
+
+<h3>Symbols</h3>
+
+<p>Symbols are abstract references represented, by a short string prefixed with a colon.</p>
+
+<p><code>ruby
+:[id_name]
+</code></p>
+
+<ul>
+<li>Symbols are useful when using as key of hashes</li>
+</ul>
+
+
+<p><code>ruby
+s = { :key =&gt; 'value' }
+</code></p>
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Time.html">Time</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Symbol.html">Symbol</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Flow Control]]></title>

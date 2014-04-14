@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Variable | The Ruby Rookie Notes]]></title>
+  <link href="http://rubyrookie.kumaya.co/blog/categories/variable/atom.xml" rel="self"/>
+  <link href="http://rubyrookie.kumaya.co/"/>
+  <updated>2014-04-14T23:56:48+08:00</updated>
+  <id>http://rubyrookie.kumaya.co/</id>
+  <author>
+    <name><![CDATA[Vincent Chen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Variables and Constants]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/04/14/variables-and-constants/"/>
+    <updated>2014-04-14T23:43:50+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/04/14/variables-and-constants</id>
+    <content type="html"><![CDATA[<h3>Main Syntax</h3>
+
+<ul>
+<li><strong>without any prefix:</strong> normal local variables</li>
+<li><strong><code>@</code>:</strong> instance variables</li>
+<li><strong><code>@@</code>:</strong> class variables</li>
+<li><strong><code>$</code>:</strong> global variables</li>
+</ul>
+
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Variables_and_Constants">Wikibooks: Variables and Constants</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

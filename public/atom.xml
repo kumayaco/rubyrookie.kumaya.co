@@ -4,7 +4,7 @@
   <title><![CDATA[The Ruby Rookie Notes]]></title>
   <link href="http://rubyrookie.kumaya.co/atom.xml" rel="self"/>
   <link href="http://rubyrookie.kumaya.co/"/>
-  <updated>2014-04-09T23:57:40+08:00</updated>
+  <updated>2014-04-14T23:56:48+08:00</updated>
   <id>http://rubyrookie.kumaya.co/</id>
   <author>
     <name><![CDATA[Vincent Chen]]></name>
@@ -12,6 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Variables and Constants]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/04/14/variables-and-constants/"/>
+    <updated>2014-04-14T23:43:50+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/04/14/variables-and-constants</id>
+    <content type="html"><![CDATA[<h3>Main Syntax</h3>
+
+<ul>
+<li><strong>without any prefix:</strong> normal local variables</li>
+<li><strong><code>@</code>:</strong> instance variables</li>
+<li><strong><code>@@</code>:</strong> class variables</li>
+<li><strong><code>$</code>:</strong> global variables</li>
+</ul>
+
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Variables_and_Constants">Wikibooks: Variables and Constants</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Other Blocks]]></title>
+    <link href="http://rubyrookie.kumaya.co/blog/2014/04/10/other-blocks/"/>
+    <updated>2014-04-10T23:56:11+08:00</updated>
+    <id>http://rubyrookie.kumaya.co/blog/2014/04/10/other-blocks</id>
+    <content type="html"><![CDATA[<!-- more -->
+
+
+<h3>Date and Time</h3>
+
+<p><code>Time</code> are able to using <code>&lt;</code> or <code>&gt;</code> to compare time.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>2014-04-11 00:01:31 +0800
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Other methods</h4>
+
+<ul>
+<li>Time.local(year, month, day, hour, min, sec, msec)</li>
+<li>Time.gm(year, month, day, hour, min, sec, msec)</li>
+<li>Time.utc(year, month, day, hour, min, sec, msec)</li>
+</ul>
+
+
+<h4>Converting</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">epoch_time</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">gm</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span>
+</span><span class='line'><span class="n">t</span> <span class="o">=</span> <span class="no">Time</span><span class="o">.</span><span class="n">at</span><span class="p">(</span><span class="n">epoch_time</span><span class="p">)</span>
+</span><span class='line'><span class="nb">puts</span> <span class="n">t</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">day</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>will get</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>2007
+</span><span class='line'>5
+</span><span class='line'>1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Symbols</h3>
+
+<p>Symbols are abstract references represented, by a short string prefixed with a colon.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">:</span><span class="o">[</span><span class="n">id_name</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>Symbols are useful when using as key of hashes</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:key</span> <span class="o">=&gt;</span> <span class="s1">&#39;value&#39;</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>References</h3>
+
+<ul>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Time.html">Time</a></li>
+<li><a href="http://www.ruby-doc.org/core-2.1.1/Symbol.html">Symbol</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Flow Control]]></title>
